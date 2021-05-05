@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'ui/screen/sight_list_screen.dart';
 
 void main() {
   runApp(MyApp());
 }
 
-class MyFirstWidget extends StatelessWidget {
+/*class MyFirstWidget extends StatelessWidget {
   var _count = 0;
   @override
   Widget build(BuildContext context) {
@@ -13,7 +14,7 @@ class MyFirstWidget extends StatelessWidget {
       child: Text('Hello! $_count'),
     );
   }
-}
+}*/
 
 class MyFirstWidget2 extends StatefulWidget {
   @override
@@ -41,7 +42,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        home: MyFirstWidget(),
+        home: SightListScreen(), //MyFirstWidget(),
       );
 }
 
