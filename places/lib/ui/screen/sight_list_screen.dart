@@ -17,7 +17,7 @@ class SightListScreenState extends State<SightListScreen> {
           title: Text(t),
           elevation: 0,
         ),
-        body: Center(
+        body: Form(
           child: Container(
             decoration: BoxDecoration(color: color),
             width: double.infinity,
