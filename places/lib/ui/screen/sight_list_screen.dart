@@ -38,22 +38,16 @@ class SightListScreenState extends State<SightListScreen> {
                         text: s,
                         style: const TextStyle(
                           color: Colors.black,
-                          fontSize: 45,
-                          fontFamily: 'Roboto',
                         )),
                     TextSpan(
                         text: i,
                         style: const TextStyle(
                           color: Colors.yellow,
-                          fontSize: 45,
-                          fontFamily: 'Roboto',
                         )),
                     TextSpan(
                         text: m,
                         style: const TextStyle(
                           color: Colors.black,
-                          fontSize: 45,
-                          fontFamily: 'Roboto',
                         )),
                   ]),
               maxLines: 2,
