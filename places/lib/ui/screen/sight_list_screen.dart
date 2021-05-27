@@ -6,15 +6,18 @@ class SightListScreen extends StatefulWidget {
 }
 
 class SightListScreenState extends State<SightListScreen> {
-  final t = 'Список интересных мест';
-  final r = 'Список интересных мест';
+  final titleText = 'Cписок интересных мест';
+  final S = 'С';
+  final s = 'писок ';
+  final i = 'и';
+  final m = 'нтересных мест';
 
   // ignore: prefer_void_to_null
   Null get color => null;
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: Text(t),
+          title: Text(titleText),
           elevation: 0,
         ),
         body: Form(
@@ -22,13 +25,38 @@ class SightListScreenState extends State<SightListScreen> {
             decoration: BoxDecoration(color: color),
             width: double.infinity,
             height: 100,
-            child: Text(
-              r,
+            child: RichText(
+              text: TextSpan(
+                  text: S,
+                  style: const TextStyle(
+                    color: Colors.green,
+                    fontSize: 45,
+                    fontFamily: 'Roboto',
+                  ),
+                  children: [
+                    TextSpan(
+                        text: s,
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 45,
+                          fontFamily: 'Roboto',
+                        )),
+                    TextSpan(
+                        text: i,
+                        style: const TextStyle(
+                          color: Colors.yellow,
+                          fontSize: 45,
+                          fontFamily: 'Roboto',
+                        )),
+                    TextSpan(
+                        text: m,
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 45,
+                          fontFamily: 'Roboto',
+                        )),
+                  ]),
               maxLines: 2,
-              style: const TextStyle(
-                fontSize: 50,
-                fontFamily: 'Roboto',
-              ),
             ),
           ),
         ),
