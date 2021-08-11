@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:places_yakimova_project/mocks.dart';
 import 'package:places_yakimova_project/ui/screen/sight_card.dart';
 
+import 'const/strings.dart';
 import 'const/values.dart';
 
 class SightListScreen extends StatefulWidget {
@@ -10,16 +11,10 @@ class SightListScreen extends StatefulWidget {
 }
 
 class SightListScreenState extends State<SightListScreen> {
-  final titleText = 'Cписок интересных мест';
-
   // ignore: prefer_void_to_null
   Null get color => null;
   @override
   Widget build(BuildContext context) => Scaffold(
-        // appBar: AppBar(
-        //   title: Text(titleText),
-        //   elevation: 0,
-        // ),
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -33,9 +28,9 @@ class SightListScreenState extends State<SightListScreen> {
                     top: 64,
                   ),
                   child: RichText(
-                    text: TextSpan(
+                    text: const TextSpan(
                       text: titleText,
-                      style: const TextStyle(
+                      style: TextStyle(
                         color: Colors.black,
                         fontSize: 32,
                         fontFamily: 'Roboto',

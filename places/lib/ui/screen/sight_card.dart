@@ -1,18 +1,28 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:places_yakimova_project/domain/sight.dart';
 
 import 'const/colors.dart';
 import 'const/values.dart';
 
 class SightCard extends StatelessWidget {
-  const SightCard({
+  SightCard({
     Key? key,
     required this.sight,
   }) : super(key: key);
 
   final Sight sight;
   final titleTextLike = 'Like';
+
+  final mapSightTypeToString = {
+    SightType.other: 'другое',
+    SightType.cafe: 'кафе',
+    SightType.hotel: 'отель',
+    SightType.museum: 'музей',
+    SightType.park: 'парк',
+    SightType.restaurant: 'ресторан',
+  };
 
   SightType? get titleText => null;
   @override
@@ -46,7 +56,7 @@ class SightCard extends StatelessWidget {
                         left: standardSpacing,
                         top: standardSpacing,
                         child: Text(
-                          sight.type,
+                          mapSightTypeToString[sight.type]!,
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 14,
@@ -56,13 +66,7 @@ class SightCard extends StatelessWidget {
                       Positioned(
                         right: standardSpacing,
                         top: standardSpacing,
-                        child: Text(
-                          titleTextLike, //sight.type,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 14,
-                          ),
-                        ),
+                        child: SvgPicture.asset('res/image/like.svg'),
                       ),
                     ],
                   ),
