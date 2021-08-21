@@ -24,7 +24,7 @@ class _SightDetailsScreenState extends State<SightDetailsScreen> {
   static const toSchedule = 'Запланировать';
   static const favorites = 'В избранное';
 
-  final mapSightTypeToString = {
+  static const mapSightTypeToString = {
     SightType.other: 'другое',
     SightType.cafe: 'кафе',
     SightType.hotel: 'отель',

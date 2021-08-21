@@ -7,15 +7,15 @@ import 'const/colors.dart';
 import 'const/values.dart';
 
 class SightCard extends StatelessWidget {
-  SightCard({
+  const SightCard({
     Key? key,
     required this.sight,
   }) : super(key: key);
 
   final Sight sight;
-  final titleTextLike = 'Like';
+  static const titleTextLike = 'Like';
 
-  final mapSightTypeToString = {
+  static const mapSightTypeToString = {
     SightType.other: 'другое',
     SightType.cafe: 'кафе',
     SightType.hotel: 'отель',
@@ -81,7 +81,7 @@ class SightCard extends StatelessWidget {
                           sight.name,
                           style: Theme.of(context).textTheme.headline6,
                         ),
-                        const SizedBox(height: 2),
+                        const SizedBox(height: standrtSizedBox),
                         Expanded(
                           child: Text(
                             sight.details,
