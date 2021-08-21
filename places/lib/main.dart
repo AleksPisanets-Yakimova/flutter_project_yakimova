@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:places_yakimova_project/mocks.dart';
 import 'package:places_yakimova_project/ui/screen/sight_details_screen.dart';
-//import 'package:places_yakimova_project/ui/screen/sight_list_screen.dart';
+import 'package:places_yakimova_project/ui/screen/sight_list_screen.dart';
 
 void main() {
   runApp(MyApp());

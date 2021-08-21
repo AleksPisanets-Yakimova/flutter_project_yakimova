@@ -47,11 +47,11 @@ class _SightDetailsScreenState extends State<SightDetailsScreen> {
                     height: 360, //обрежет и заполнит пространство
                   ),
                   Positioned(
-                    left: 16,
+                    left: standardSpacing,
                     top: MediaQuery.of(context).padding.top + 16,
                     child: Container(
-                      width: 32,
-                      height: 32,
+                      width: standartSizeIndent,
+                      height: standartSizeIndent,
                       decoration: const BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                         color: Colors.white,
@@ -72,7 +72,7 @@ class _SightDetailsScreenState extends State<SightDetailsScreen> {
                       widget.sight.name,
                       style: Theme.of(context).textTheme.headline5,
                     ),
-                    const SizedBox(height: 2),
+                    const SizedBox(height: standrtSizedBox),
                     Row(
                       children: [
                         Text(
@@ -92,12 +92,12 @@ class _SightDetailsScreenState extends State<SightDetailsScreen> {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 24),
+                    const SizedBox(height: standardSpacingTextGalery),
                     Text(
                       widget.sight.details,
                       style: Theme.of(context).textTheme.bodyText1,
                     ),
-                    const SizedBox(height: 24),
+                    const SizedBox(height: standardSpacingTextGalery),
                     Stack(
                       children: [
                         Center(
@@ -112,6 +112,7 @@ class _SightDetailsScreenState extends State<SightDetailsScreen> {
                               ),
                               child: Row(
                                 children: [
+                                  const SizedBox(width: 83),
                                   SvgPicture.asset('res/image/route.svg'),
                                   const SizedBox(width: 10),
                                   const Text(
@@ -128,7 +129,7 @@ class _SightDetailsScreenState extends State<SightDetailsScreen> {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 24),
+                    const SizedBox(height: standardSpacingTextGalery),
                     Container(
                       height: 0.8,
                       decoration: const BoxDecoration(
@@ -141,11 +142,12 @@ class _SightDetailsScreenState extends State<SightDetailsScreen> {
                       children: [
                         Container(
                           height: 40,
-                          width: 164,
+                          width: 200,
                           child: Row(
                             children: [
+                              const SizedBox(width: standartSizeIndent),
                               SvgPicture.asset('res/image/theCalendar.svg'),
-                              // const SizedBox(width: 9),
+                              const SizedBox(width: 9),
                               const Text(
                                 toSchedule,
                                 style: TextStyle(
@@ -156,15 +158,15 @@ class _SightDetailsScreenState extends State<SightDetailsScreen> {
                             ],
                           ),
                         ),
-                        // const SizedBox(width: 14),
                         Container(
                           height: 40,
-                          width: 164,
+                          width: 200,
                           child: Positioned(
                             left: 17,
                             child: Row(
                               children: [
                                 SvgPicture.asset('res/image/likeBlack.svg'),
+                                const SizedBox(width: 9),
                                 const Text(
                                   favorites,
                                   style: TextStyle(

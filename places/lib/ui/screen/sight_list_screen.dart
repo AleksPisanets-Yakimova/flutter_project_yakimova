@@ -32,7 +32,7 @@ class SightListScreenState extends State<SightListScreen> {
                       text: titleText,
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 32,
+                        fontSize: standartSizeIndent,
                         fontFamily: 'Roboto',
                       ),
                     ),
