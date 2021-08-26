@@ -49,7 +49,12 @@ class SightCard extends StatelessWidget {
                       Positioned.fill(
                         child: Image.network(
                           sight.urls[0],
-                          fit: BoxFit.cover, //обрежет и заполнит пространство
+                          fit: BoxFit.fitWidth,
+                          loadingBuilder: (context, child, progress) =>
+                              progress == null
+                                  ? child
+                                  : const LinearProgressIndicator(),
+                          //BoxFit.cover, //обрежет и заполнит пространство
                         ),
                       ),
                       Positioned(

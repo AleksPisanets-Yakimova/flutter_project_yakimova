@@ -35,10 +35,10 @@ class MyApp extends StatelessWidget {
           visualDensity: VisualDensity.adaptivePlatformDensity,
           fontFamily: 'Roboto',
         ),
-        //home: SightListScreen(), //Список интересных мест
-        home: SightDetailsScreen(
-          sight: mocks.first,
-        ), // Галерея
+        home: SightListScreen(), //Список интересных мест
+        // home: SightDetailsScreen(
+        //   sight: mocks.first,
+        // ), // Галерея
       );
 }
 

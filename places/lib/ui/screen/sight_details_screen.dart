@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:places_yakimova_project/domain/sight.dart';
@@ -42,7 +40,7 @@ class _SightDetailsScreenState extends State<SightDetailsScreen> {
               Stack(
                 children: [
                   Image.network(
-                    widget.sight.urls[0],
+                    widget.sight.urls.first, //widget.sight.urls[0],
                     fit: BoxFit.cover,
                     height: 360, //обрежет и заполнит пространство
                   ),
