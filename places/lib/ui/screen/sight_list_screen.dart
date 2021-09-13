@@ -4,6 +4,7 @@ import 'package:places_yakimova_project/ui/screen/sight_card.dart';
 
 import 'const/strings.dart';
 import 'const/values.dart';
+import 'my_bottom_navigation_bar.dart';
 
 class SightListScreen extends StatefulWidget {
   @override
@@ -48,5 +49,6 @@ class SightListScreenState extends State<SightListScreen> {
             ],
           ),
         ),
+        bottomNavigationBar: const MyBottomNavigationBar(currentIndex: 0),
       );
 }

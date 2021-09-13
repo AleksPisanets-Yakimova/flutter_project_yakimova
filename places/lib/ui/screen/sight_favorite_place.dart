@@ -6,8 +6,8 @@ import 'package:places_yakimova_project/domain/sight.dart';
 import 'const/colors.dart';
 import 'const/values.dart';
 
-class SightCard extends StatelessWidget {
-  const SightCard({
+class SightCardFavoritePlace extends StatelessWidget {
+  const SightCardFavoritePlace({
     Key? key,
     required this.sight,
   }) : super(key: key);
@@ -23,13 +23,16 @@ class SightCard extends StatelessWidget {
     SightType.restaurant: 'ресторан',
   };
 
+  static const textTimeWork = 'закрыто до 09:00';
+  static const textTimePlan = 'Запланировано на 12 окт. 2021';
+
   SightType? get titleText => null;
   @override
   Widget build(BuildContext context) => Padding(
         padding: const EdgeInsets.only(
-          left: standardSpacing,
-          right: standardSpacing,
-          top: standardSpacing,
+          left: 0, //standardSpacing,
+          right: 0, //standardSpacing,
+          top: 24,
         ),
         child: Container(
           decoration: const BoxDecoration(
@@ -38,7 +41,7 @@ class SightCard extends StatelessWidget {
           ),
           clipBehavior: Clip.antiAlias,
           child: AspectRatio(
-            aspectRatio: 4 / 3,
+            aspectRatio: 6 / 3,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
@@ -48,12 +51,12 @@ class SightCard extends StatelessWidget {
                       Positioned.fill(
                         child: Image.network(
                           sight.urls[0],
-                          fit: BoxFit.fitWidth,
+                          fit: BoxFit.cover, //fitWidth,
                           loadingBuilder: (context, child, progress) =>
                               progress == null
                                   ? child
                                   : const LinearProgressIndicator(),
-                          //BoxFit.cover, //обрежет и заполнит пространство
+                          // BoxFit.cover, //обрежет и заполнит пространство
                         ),
                       ),
                       Positioned(
@@ -70,7 +73,14 @@ class SightCard extends StatelessWidget {
                       Positioned(
                         right: standardSpacing,
                         top: standardSpacing,
-                        child: SvgPicture.asset('res/image/like_white.svg'),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            SvgPicture.asset('res/image/calendarWhite.svg'),
+                            const SizedBox(width: 23),
+                            SvgPicture.asset('res/image/output.svg'),
+                          ],
+                        ),
                       ),
                     ],
                   ),
@@ -86,9 +96,19 @@ class SightCard extends StatelessWidget {
                           style: Theme.of(context).textTheme.headline6,
                         ),
                         const SizedBox(height: standrtSizedBox),
+                        const Expanded(
+                          child: Text(
+                            textTimePlan,
+                            style: TextStyle(
+                              color: buildRouteButton,
+                              fontSize: 14,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 2),
                         Expanded(
                           child: Text(
-                            sight.details,
+                            textTimeWork,
                             style: Theme.of(context).textTheme.bodyText1,
                           ),
                         ),

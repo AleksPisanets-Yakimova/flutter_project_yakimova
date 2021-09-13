@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:places_yakimova_project/domain/sight.dart';
-import 'package:places_yakimova_project/mocks.dart';
 
 import 'const/colors.dart';
 import 'const/values.dart';
@@ -55,7 +54,7 @@ class _SightDetailsScreenState extends State<SightDetailsScreen> {
                         color: Colors.white,
                       ),
                       child: Center(
-                        child: SvgPicture.asset('res/image/backArrow.svg'),
+                        child: SvgPicture.asset('res/image/back_arrow.svg'),
                       ),
                     ),
                   )
@@ -144,7 +143,7 @@ class _SightDetailsScreenState extends State<SightDetailsScreen> {
                           child: Row(
                             children: [
                               const SizedBox(width: standartSizeIndent),
-                              SvgPicture.asset('res/image/theCalendar.svg'),
+                              SvgPicture.asset('res/image/the_calendar.svg'),
                               const SizedBox(width: 9),
                               const Text(
                                 toSchedule,
@@ -163,7 +162,7 @@ class _SightDetailsScreenState extends State<SightDetailsScreen> {
                             left: 17,
                             child: Row(
                               children: [
-                                SvgPicture.asset('res/image/likeBlack.svg'),
+                                SvgPicture.asset('res/image/like_black.svg'),
                                 const SizedBox(width: 9),
                                 const Text(
                                   favorites,
