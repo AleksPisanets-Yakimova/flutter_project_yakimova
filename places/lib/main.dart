@@ -1,20 +1,11 @@
 import 'package:flutter/material.dart';
-import 'ui/screen/sight_list_screen.dart';
+import 'package:places_yakimova_project/mocks.dart';
+import 'package:places_yakimova_project/ui/screen/sight_details_screen.dart';
+import 'package:places_yakimova_project/ui/screen/sight_list_screen.dart';
 
 void main() {
   runApp(MyApp());
 }
-
-/*class MyFirstWidget extends StatelessWidget {
-  var _count = 0;
-  @override
-  Widget build(BuildContext context) {
-    _count++;
-    return Center(
-      child: Text('Hello! $_count'),
-    );
-  }
-}*/
 
 class MyFirstWidget2 extends StatefulWidget {
   @override
@@ -37,12 +28,17 @@ class _MyFirstWidget2State extends State<MyFirstWidget2> {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) => MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
+          fontFamily: 'Roboto',
         ),
-        home: SightListScreen(), //MyFirstWidget(),
+        home: SightListScreen(), //Список интересных мест
+        // home: SightDetailsScreen(
+        //   sight: mocks.first,
+        // ), // Галерея
       );
 }
 
@@ -68,6 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           title: Text(widget.title),
+          centerTitle: true,
         ),
         body: Center(
           child: Column(
