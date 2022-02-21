@@ -1,9 +1,8 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:places_yakimova_project/domain/sight.dart';
 
-import 'const/colors.dart';
+import '../../main.dart';
 import 'const/values.dart';
 
 class SightCardPlaceVisited extends StatelessWidget {
@@ -14,30 +13,22 @@ class SightCardPlaceVisited extends StatelessWidget {
 
   final Sight sight;
 
-  static const mapSightTypeToString = {
-    SightType.other: 'другое',
-    SightType.cafe: 'кафе',
-    SightType.hotel: 'отель',
-    SightType.museum: 'музей',
-    SightType.park: 'парк',
-    SightType.restaurant: 'ресторан',
-  };
-
-  static const textTimeWork = 'закрыто до 09:00';
-  static const textTimePlan = 'Запланировано на 12 окт. 2021';
-
   SightType? get titleText => null;
   @override
   Widget build(BuildContext context) => Padding(
         padding: const EdgeInsets.only(
-          left: 0, //standardSpacing,
-          right: 0, //standardSpacing,
-          top: 24,
+          left: standartSpacingZero, //standardSpacing,
+          right: standartSpacingZero, //standardSpacing,
+          top: standartSpacingTextGalery,
         ),
         child: Container(
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(standardSpacing)),
-            color: sightCardBackground,
+          decoration: BoxDecoration(
+            borderRadius:
+                const BorderRadius.all(Radius.circular(standartSpacing)),
+            color: context
+                .findRootAncestorStateOfType<MyAppState>()!
+                .myTheme
+                .colorDecoration, //colorWhiteSmoke, устаовить цвет в теме
           ),
           clipBehavior: Clip.antiAlias,
           child: AspectRatio(
@@ -56,28 +47,26 @@ class SightCardPlaceVisited extends StatelessWidget {
                               progress == null
                                   ? child
                                   : const LinearProgressIndicator(),
-                          // BoxFit.cover, //обрежет и заполнит пространство
                         ),
                       ),
                       Positioned(
-                        left: standardSpacing,
-                        top: standardSpacing,
+                        left: standartSpacing,
+                        top: standartSpacing,
                         child: Text(
                           mapSightTypeToString[sight.type]!,
                           style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 14,
+                            fontSize: standartTextSize,
                           ),
                         ),
                       ),
                       Positioned(
-                        right: standardSpacing,
-                        top: standardSpacing,
+                        right: standartSpacing,
+                        top: standartSpacing,
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            SvgPicture.asset('res/image/calendarWhite.svg'),
-                            const SizedBox(width: 23),
+                            SvgPicture.asset('res/image/share.svg'),
+                            const SizedBox(width: standartSizeBox),
                             SvgPicture.asset('res/image/output.svg'),
                           ],
                         ),
@@ -87,7 +76,7 @@ class SightCardPlaceVisited extends StatelessWidget {
                 ),
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.all(standardSpacing),
+                    padding: const EdgeInsets.all(standartSpacing),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
@@ -95,17 +84,16 @@ class SightCardPlaceVisited extends StatelessWidget {
                           sight.name,
                           style: Theme.of(context).textTheme.headline6,
                         ),
-                        const SizedBox(height: standrtSizedBox),
+                        const SizedBox(height: standartSizedBox),
                         const Expanded(
                           child: Text(
                             textTimePlan,
                             style: TextStyle(
-                              color: buildRouteButton,
-                              fontSize: 14,
+                              fontSize: standartTextSize,
                             ),
                           ),
                         ),
-                        const SizedBox(height: 2),
+                        const SizedBox(height: standartSizedBox),
                         Expanded(
                           child: Text(
                             textTimeWork,
@@ -121,9 +109,4 @@ class SightCardPlaceVisited extends StatelessWidget {
           ),
         ),
       );
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(EnumProperty<SightType>('titleText', titleText));
-  }
 }

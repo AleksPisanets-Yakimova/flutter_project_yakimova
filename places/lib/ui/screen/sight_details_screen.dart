@@ -15,23 +15,9 @@ class SightDetailsScreen extends StatefulWidget {
 }
 
 class _SightDetailsScreenState extends State<SightDetailsScreen> {
-  // final titleText = 'Cписок интересных мест';
-  static const textTimeWork = 'закрыто до 09:00';
-  static const buildRroute = 'ПОСТРОИТЬ МАРШРУТ';
-  static const toSchedule = 'Запланировать';
-  static const favorites = 'В избранное';
-
-  static const mapSightTypeToString = {
-    SightType.other: 'другое',
-    SightType.cafe: 'кафе',
-    SightType.hotel: 'отель',
-    SightType.museum: 'музей',
-    SightType.park: 'парк',
-    SightType.restaurant: 'ресторан',
-  };
-
   @override
   Widget build(BuildContext context) => Scaffold(
+        backgroundColor: colorBlack,
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -41,27 +27,30 @@ class _SightDetailsScreenState extends State<SightDetailsScreen> {
                   Image.network(
                     widget.sight.urls.first, //widget.sight.urls[0],
                     fit: BoxFit.cover,
-                    height: 360, //обрежет и заполнит пространство
+                    height:
+                        standartHightImage, //обрежет и заполнит пространство
                   ),
                   Positioned(
-                    left: standardSpacing,
-                    top: MediaQuery.of(context).padding.top + 16,
+                    left: standartSpacing,
+                    top: MediaQuery.of(context).padding.top + standartSpacing,
                     child: Container(
                       width: standartSizeIndent,
                       height: standartSizeIndent,
                       decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                        color: Colors.white,
+                        borderRadius:
+                            BorderRadius.all(Radius.circular(standartRadius)),
+                        color: colorBlack, //lmColorText,
                       ),
                       child: Center(
-                        child: SvgPicture.asset('res/image/back_arrow.svg'),
+                        child: SvgPicture.asset('res/image/back_arrow.svg',
+                            color: colorWhite),
                       ),
                     ),
                   )
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.all(standardSpacing),
+                padding: const EdgeInsets.all(standartSpacing),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
@@ -69,54 +58,54 @@ class _SightDetailsScreenState extends State<SightDetailsScreen> {
                       widget.sight.name,
                       style: Theme.of(context).textTheme.headline5,
                     ),
-                    const SizedBox(height: standrtSizedBox),
+                    const SizedBox(height: standartSizedBox),
                     Row(
                       children: [
                         Text(
                           mapSightTypeToString[widget.sight.type]!,
                           style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 14,
+                            color: colorSlateBlue, //Color(0xFF7C7E92),
+                            fontSize: standartTextSize,
                           ),
                         ),
-                        const SizedBox(width: standardSpacing),
+                        const SizedBox(width: standartSpacing),
                         const Text(
                           textTimeWork,
                           style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 14,
+                            color: colorSlateBlue, //Color(0xFF7C7E92),
+                            fontSize: standartTextSize,
                           ),
                         ),
                       ],
                     ),
-                    const SizedBox(height: standardSpacingTextGalery),
+                    const SizedBox(height: standartSpacingTextGalery),
                     Text(
                       widget.sight.details,
                       style: Theme.of(context).textTheme.bodyText1,
                     ),
-                    const SizedBox(height: standardSpacingTextGalery),
+                    const SizedBox(height: standartSpacingTextGalery),
                     Stack(
                       children: [
                         Center(
                           child: Padding(
-                            padding: const EdgeInsets.all(standardSpacing),
+                            padding: const EdgeInsets.all(standartSpacing),
                             child: Container(
-                              height: 48,
+                              height: standartHeight_1,
                               decoration: const BoxDecoration(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(12)),
-                                color: buildRouteButton, //Colors.green,
+                                color: colorMediumSeaGreen, //Colors.green,
                               ),
                               child: Row(
                                 children: [
-                                  const SizedBox(width: 83),
+                                  const SizedBox(width: standartWidth),
                                   SvgPicture.asset('res/image/route.svg'),
-                                  const SizedBox(width: 10),
+                                  const SizedBox(width: standartWidth_1),
                                   const Text(
-                                    buildRroute,
+                                    textBuildRroute,
                                     style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 14,
+                                        color: colorWhite,
+                                        fontSize: standartTextSize,
                                         fontWeight: FontWeight.bold),
                                   ),
                                 ],
@@ -126,49 +115,53 @@ class _SightDetailsScreenState extends State<SightDetailsScreen> {
                         ),
                       ],
                     ),
-                    const SizedBox(height: standardSpacingTextGalery),
+                    const SizedBox(height: standartSpacingTextGalery),
                     Container(
-                      height: 0.8,
+                      height: standartHeight_3,
                       decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(12)),
-                        color: Colors.grey,
+                        borderRadius:
+                            BorderRadius.all(Radius.circular(standartRadius_1)),
+                        color: colorSlateBlue, //Colors.grey,
                       ),
                     ),
-                    const SizedBox(height: 8),
+                    const SizedBox(height: standartHeight_2),
                     Row(
                       children: [
-                        Container(
-                          height: 40,
-                          width: 200,
+                        SizedBox(
+                          height: standartHeight,
+                          width: standartWidth_2,
                           child: Row(
                             children: [
                               const SizedBox(width: standartSizeIndent),
                               SvgPicture.asset('res/image/the_calendar.svg'),
-                              const SizedBox(width: 9),
+                              const SizedBox(width: standartWidth_3),
                               const Text(
-                                toSchedule,
+                                textToSchedule,
                                 style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 14,
+                                  color: colorSlateBlue, //Colors.grey,
+                                  fontSize: standartTextSize,
                                 ),
                               ),
                             ],
                           ),
                         ),
-                        Container(
-                          height: 40,
-                          width: 200,
+                        SizedBox(
+                          height: standartHeight,
+                          width: standartWidth_2,
                           child: Positioned(
-                            left: 17,
+                            left: standartSpacing_1,
                             child: Row(
                               children: [
-                                SvgPicture.asset('res/image/like_black.svg'),
-                                const SizedBox(width: 9),
+                                SvgPicture.asset(
+                                  'res/image/heart_full.svg',
+                                  color: colorWhite, //selectedItemColor,
+                                ),
+                                const SizedBox(width: standartWidth_3),
                                 const Text(
-                                  favorites,
+                                  textToFavorites,
                                   style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 14,
+                                    color: colorWhite,
+                                    fontSize: standartTextSize,
                                   ),
                                 ),
                               ],

@@ -10,38 +10,46 @@ class MyBottomNavigationBar extends StatelessWidget {
   final int currentIndex;
 
   @override
-  Widget build(BuildContext context) => BottomNavigationBar(
-        type: BottomNavigationBarType
-            .fixed, //изменение размера и положения иконки снизу
-        unselectedItemColor: Colors.grey,
-        selectedItemColor: Colors.green,
-        currentIndex: currentIndex,
-        onTap: (currentIndex) {},
-        items: [
-          BottomNavigationBarItem(
-            icon: currentIndex == 0
-                ? SvgPicture.asset(
-                    'res/image/list_full.svg',
-                    color: Colors.black,
-                  )
-                : SvgPicture.asset(
-                    'res/image/list.svg',
-                    color: Colors.black,
-                  ),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: currentIndex == 0
-                ? SvgPicture.asset(
-                    'res/image/like_black.svg',
-                    color: Colors.black,
-                  )
-                : SvgPicture.asset(
-                    'res/image/heart_full.svg',
-                    color: Colors.black,
-                  ),
-            label: '',
-          ),
-        ],
-      );
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return BottomNavigationBar(
+      type: BottomNavigationBarType
+          .fixed, //изменение размера и положения иконки снизу
+      currentIndex: currentIndex,
+      showSelectedLabels: false,
+      showUnselectedLabels: false,
+      onTap: (currentIndex) {},
+      items: [
+        BottomNavigationBarItem(
+          icon: currentIndex == 0
+              ? SvgPicture.asset(
+                  'res/image/list_full.svg',
+                  color: theme.bottomNavigationBarTheme
+                      .unselectedItemColor, //selectedItemColor,
+                )
+              : SvgPicture.asset(
+                  'res/image/list.svg',
+                  color: theme.bottomNavigationBarTheme
+                      .selectedItemColor, //unselectedItemColor,
+                ),
+          label: '',
+        ),
+        BottomNavigationBarItem(
+          icon: currentIndex == 1
+              ? SvgPicture.asset(
+                  'res/image/heart_full.svg',
+                  color: theme.bottomNavigationBarTheme
+                      .unselectedItemColor, //selectedItemColor,
+                )
+              : SvgPicture.asset(
+                  'res/image/like_black.svg',
+                  color: theme.bottomNavigationBarTheme
+                      .selectedItemColor, //unselectedItemColor,
+                ),
+          label: '',
+        ),
+      ],
+    );
+  }
 }
