@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-// import 'package:places_yakimova_project/domain/sight.dart';
-// import 'package:places_yakimova_project/mocks.dart';
+import 'package:places_yakimova_project/domain/sight.dart';
+import 'package:places_yakimova_project/mocks.dart';
 import 'package:places_yakimova_project/ui/screen/rez/dark_theme.dart';
 import 'package:places_yakimova_project/ui/screen/rez/light_theme.dart';
 import 'package:places_yakimova_project/ui/screen/rez/my_theme_data.dart';
-// import 'package:places_yakimova_project/ui/screen/rez/themes.dart';
-// import 'package:places_yakimova_project/ui/screen/sight_details_screen.dart';
+
+import 'package:places_yakimova_project/ui/screen/sight_details_screen.dart';
 import 'package:places_yakimova_project/ui/screen/sight_list_screen.dart';
-// import 'package:places_yakimova_project/ui/screen/sight_visiting_screen.dart';
-// import 'package:places_yakimova_project/ui/screen/sight_visiting_screen.dart';
-// import 'package:places_yakimova_project/ui/screen/rez/themes.dart';
+import 'package:places_yakimova_project/ui/screen/sight_visiting_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -58,11 +56,11 @@ class MyAppState extends State<MyApp> {
         //   visualDensity: VisualDensity.adaptivePlatformDensity,
         //   fontFamily: 'Roboto',
         // ),
-        home: SightListScreen(), //Список интересных мест
+        // home: SightListScreen(), //Список интересных мест
         // home: SightDetailsScreen(
         //   sight: mocks.first,
         // ), // Детлизация места
-        // home: VisitingScreen(), // посетить / хочу посетить
+        home: VisitingScreen(), // посетить / хочу посетить
         // home: {},
       );
 }

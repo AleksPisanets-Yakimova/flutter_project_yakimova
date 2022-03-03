@@ -25,13 +25,11 @@ class MyBottomNavigationBar extends StatelessWidget {
           icon: currentIndex == 0
               ? SvgPicture.asset(
                   'res/image/list_full.svg',
-                  color: theme.bottomNavigationBarTheme
-                      .unselectedItemColor, //selectedItemColor,
+                  color: theme.bottomNavigationBarTheme.unselectedItemColor,
                 )
               : SvgPicture.asset(
                   'res/image/list.svg',
-                  color: theme.bottomNavigationBarTheme
-                      .selectedItemColor, //unselectedItemColor,
+                  color: theme.bottomNavigationBarTheme.selectedItemColor,
                 ),
           label: '',
         ),

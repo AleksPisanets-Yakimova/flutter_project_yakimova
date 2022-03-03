@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 const Color colorBlack = Color(0xFF000000);
 const Color colorWhite = Color(0xFFFFFFFF);
+const Color colorDark = Color(0xFF2D2E3E);
 
 const Color colorNavyBlue = Color(0xFF21222C);
 const Color colorWhiteSmoke =
@@ -13,3 +14,6 @@ const Color colorSlateBlue = Color(0xFF7C7E92);
 const Color colorAlmostBlack = Color(0xFF1A1A20);
 
 const Color colorRed = Color(0xFFFF0000);
+
+const Color colorDackBlueMain = Color(0xFF252849);
+const Color colorDackBlueSec = Color(0xFF3B3E5B);

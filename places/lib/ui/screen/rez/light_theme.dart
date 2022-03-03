@@ -8,6 +8,16 @@ import 'my_theme_data.dart';
 MyThemeData createLightTheme() => MyThemeData(
       brightness: Brightness.light,
       background: colorWhite,
-      colorDecoration: colorMediumSeaGreen,
+      colorDecoration: colorWhiteSmoke,
       colorIndicator: colorDarkSlateGray,
+      colorTextTitle: colorBlack,
+      colorTextSightCategory: colorWhite,
+      colorTextSightTimeWork: colorSlateBlue,
+      colorSelectedItem: colorDackBlueMain,
+      colorUnselectedItem: colorDackBlueSec,
+      colorTabBarSelectedBack: colorDarkSlateGray,
+      colorTabBarUnselectedBack: colorWhiteSmoke,
+      colorTabBarSelectedText: colorDarkSlateGray,
+      colorTabBarUnselectedText: colorSlateBlue,
+      colorTextTimePlan: colorMediumSeaGreen,
     );

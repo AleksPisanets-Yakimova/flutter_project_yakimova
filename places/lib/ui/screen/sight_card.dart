@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:places_yakimova_project/domain/sight.dart';
 
 import '../../main.dart';
-import 'const/colors.dart';
+import 'const/styles.dart';
 import 'const/values.dart';
 
 class SightCard extends StatelessWidget {
@@ -30,7 +30,7 @@ class SightCard extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius:
               const BorderRadius.all(Radius.circular(standartSpacing)),
-          color: theme.colorDecoration, //colorWhiteS,
+          color: theme.colorDecoration,
         ),
         clipBehavior: Clip.antiAlias,
         child: AspectRatio(
@@ -56,10 +56,8 @@ class SightCard extends StatelessWidget {
                       top: standartSpacing,
                       child: Text(
                         mapSightTypeToString[sight.type]!,
-                        style: const TextStyle(
-                          color: colorWhite,
-                          fontSize: standartTextSize,
-                        ),
+                        style: textSightListCategory
+                            .withColor(theme.colorTextSightCategory),
                       ),
                     ),
                     Positioned(
@@ -78,16 +76,14 @@ class SightCard extends StatelessWidget {
                       children: [
                         Text(
                           sight.name,
-                          style: Theme.of(context).textTheme.headline6,
+                          style:
+                              textSightListName, //.withColor(theme.colorTextTitle),
                         ),
                         const SizedBox(height: standartSizedBox),
                         const Expanded(
                           child: Text(
                             textTimeWork,
-                            style: TextStyle(
-                              color: colorNavyBlue, //Colors.grey,
-                              fontSize: standartTextSize,
-                            ),
+                            style: textSightListTimeWork,
                           ),
                         ),
                       ]),
