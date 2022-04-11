@@ -6,16 +6,16 @@
     "configurations": [
         {
             "name": "places",
-            "cwd": "places",
             "request": "launch",
-            "type": "dart"
+            "type": "dart",
+            "program": "lib/main.dart"
         },
         {
             "name": "places (profile mode)",
-            "cwd": "places",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "profile"
+            "flutterMode": "profile",
+            "program": "lib/main.dart"
         }
     ]
 }

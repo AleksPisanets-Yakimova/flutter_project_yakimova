@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/flutter_project_yakimova.iml" filepath="$PROJECT_DIR$/.idea/flutter_project_yakimova.iml" />
+      <module fileurl="file://$PROJECT_DIR$/places.iml" filepath="$PROJECT_DIR$/places.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/places_android.iml" filepath="$PROJECT_DIR$/android/places_android.iml" />
     </modules>
   </component>
 </project>
