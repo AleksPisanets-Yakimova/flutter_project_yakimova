@@ -33,62 +33,19 @@ class SightCard extends StatelessWidget {
               const BorderRadius.all(Radius.circular(AppSizes.standartSpacing)),
           color: theme.colorDecoration,
         ),
-        // clipBehavior: Clip.antiAlias,
         child: AspectRatio(
           aspectRatio: 6 / 3,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Expanded(
-                child: Stack(
-                  children: [
-                    Positioned.fill(
-                      child: Image.network(
-                        sight.urls[0],
-                        fit: BoxFit.fitWidth,
-                        loadingBuilder: (context, child, progress) =>
-                            progress == null
-                                ? child
-                                : const LinearProgressIndicator(),
-                      ),
-                    ),
-                    Positioned(
-                      left: AppSizes.standartSpacing,
-                      top: AppSizes.standartSpacing,
-                      child: Text(
-                        mapSightTypeToString[sight.type]!,
-                        style: AppTypography.textSightListCategory
-                            .withColor(theme.colorTextSightCategory),
-                      ),
-                    ),
-                    Positioned(
-                      right: AppSizes.standartSpacing,
-                      top: AppSizes.standartSpacing,
-                      child: SvgPicture.asset(AppAssets.likeWhiteSvg),
-                    ),
-                  ],
-                ),
+              _ImageCard(
+                image: sight.urls[0],
+                type: mapSightTypeToString[sight.type]!,
+                colorCard: theme.colorTextSightCategory,
               ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(AppSizes.standartSpacing),
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Text(
-                          sight.name,
-                          style: AppTypography.textSightListName
-                              .withColor(theme.colorTextTitle),
-                        ),
-                        const SizedBox(height: AppSizes.standartSizedBox),
-                        const Expanded(
-                          child: Text(
-                            AppTexts.textTimeWork,
-                            style: AppTypography.textSightListTimeWork,
-                          ),
-                        ),
-                      ]),
-                ),
+              _DescriptionCard(
+                name: sight.name,
+                colorText: theme.colorTextTitle,
               ),
             ],
           ),
@@ -102,4 +59,78 @@ class SightCard extends StatelessWidget {
     super.debugFillProperties(properties);
     properties.add(EnumProperty<SightType>('titleText', titleText));
   }
+}
+
+class _ImageCard extends StatelessWidget {
+  const _ImageCard({
+    Key? key,
+    required this.image,
+    required this.type,
+    required this.colorCard,
+  }) : super(key: key);
+
+  final String image;
+  final String type;
+  final Color colorCard;
+
+  @override
+  Widget build(BuildContext context) => Expanded(
+        child: Stack(
+          children: [
+            Positioned.fill(
+              child: Image.network(
+                image,
+                fit: BoxFit.fitWidth,
+                loadingBuilder: (context, child, progress) =>
+                    progress == null ? child : const LinearProgressIndicator(),
+              ),
+            ),
+            Positioned(
+              left: AppSizes.standartSpacing,
+              top: AppSizes.standartSpacing,
+              child: Text(
+                type,
+                style: AppTypography.textSightListCategory.withColor(colorCard),
+              ),
+            ),
+            Positioned(
+              right: AppSizes.standartSpacing,
+              top: AppSizes.standartSpacing,
+              child: SvgPicture.asset(AppAssets.likeWhiteSvg),
+            ),
+          ],
+        ),
+      );
+}
+
+class _DescriptionCard extends StatelessWidget {
+  const _DescriptionCard({
+    Key? key,
+    required this.name,
+    required this.colorText,
+  }) : super(key: key);
+
+  final String name;
+  final Color colorText;
+
+  @override
+  Widget build(BuildContext context) => Expanded(
+        child: Padding(
+          padding: const EdgeInsets.all(AppSizes.standartSpacing),
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+            Text(
+              name,
+              style: AppTypography.textSightListName.withColor(colorText),
+            ),
+            const SizedBox(height: AppSizes.standartSizedBox),
+            const Expanded(
+              child: Text(
+                AppTexts.textTimeWork,
+                style: AppTypography.textSightListTimeWork,
+              ),
+            ),
+          ]),
+        ),
+      );
 }

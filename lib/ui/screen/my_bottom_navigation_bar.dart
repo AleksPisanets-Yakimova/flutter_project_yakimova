@@ -39,13 +39,11 @@ class MyBottomNavigationBar extends StatelessWidget {
           icon: currentIndex == 1
               ? SvgPicture.asset(
                   AppAssets.heartFullSvg,
-                  color: theme.bottomNavigationBarTheme
-                      .unselectedItemColor, //selectedItemColor,
+                  color: theme.bottomNavigationBarTheme.unselectedItemColor,
                 )
               : SvgPicture.asset(
                   AppAssets.likeBlackSvg,
-                  color: theme.bottomNavigationBarTheme
-                      .selectedItemColor, //unselectedItemColor,
+                  color: theme.bottomNavigationBarTheme.selectedItemColor,
                 ),
           label: '',
         ),

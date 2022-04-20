@@ -57,10 +57,10 @@ class MyAppState extends State<MyApp> {
         //   fontFamily: 'Roboto',
         // ),
         // home: SightListScreen(), //Список интересных мест
-        // home: SightDetailsScreen(
-        //   sight: mocks.first,
-        // ), // Детлизация места
-        home: VisitingScreen(), // посетить / хочу посетить
+        home: SightDetailsScreen(
+          sight: mocks.first,
+        ), // Детлизация места
+        // home: VisitingScreen(), // посетить / хочу посетить
         // home: {},
       );
 }
