@@ -47,7 +47,7 @@ class _SightDetailsScreenState extends State<SightDetailsScreen> {
                     _ButtonRoute(),
                     const SizedBox(height: AppSizes.standartSpacingTextGalery),
                     _DividingLine(),
-                    const SizedBox(height: AppSizes.standartHeight_2),
+                    const SizedBox(height: AppSizes.standartHeightSmall),
                     _FooterButtons(),
                   ],
                 ),
@@ -133,16 +133,16 @@ class _ButtonRoute extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(AppSizes.standartSpacing),
               child: Container(
-                height: AppSizes.standartHeight_1,
+                height: AppSizes.standartHeightBigger,
                 decoration: const BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(12)),
                   color: AppColors.colorMediumSeaGreen,
                 ),
                 child: Row(
                   children: [
-                    const SizedBox(width: AppSizes.standartWidth),
+                    StandartSizedBox.standartSizedBoxBigger,
                     SvgPicture.asset(AppAssets.routeSvg),
-                    const SizedBox(width: AppSizes.standartWidth_1),
+                    StandartSizedBox.standartSizedBoxBig,
                     const Text(
                       AppTexts.textBuildRroute,
                       style: TextStyle(
@@ -162,10 +162,10 @@ class _ButtonRoute extends StatelessWidget {
 class _DividingLine extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Container(
-        height: AppSizes.standartHeight_3,
+        height: AppSizes.standartHeight,
         decoration: const BoxDecoration(
           borderRadius:
-              BorderRadius.all(Radius.circular(AppSizes.standartRadius_1)),
+              BorderRadius.all(Radius.circular(AppSizes.standartRadiusBig)),
           color: AppColors.colorSlateBlue,
         ),
       );
@@ -184,13 +184,13 @@ class _FooterButtons extends StatelessWidget {
 class _ButtonPlan extends StatelessWidget {
   @override
   Widget build(BuildContext context) => SizedBox(
-        height: AppSizes.standartHeight,
-        width: AppSizes.standartWidth_2,
+        height: AppSizes.standartHeightBig,
+        width: AppSizes.standartWidthLargest,
         child: Row(
           children: [
             const SizedBox(width: AppSizes.standartSizeIndent),
             SvgPicture.asset(AppAssets.calendarSvg),
-            const SizedBox(width: AppSizes.standartWidth_3),
+            StandartSizedBox.standartSizedBox,
             const Text(
               AppTexts.textToSchedule,
               style: TextStyle(
@@ -206,17 +206,17 @@ class _ButtonPlan extends StatelessWidget {
 class _ButtonFavorites extends StatelessWidget {
   @override
   Widget build(BuildContext context) => SizedBox(
-        height: AppSizes.standartHeight,
-        width: AppSizes.standartWidth_2,
+        height: AppSizes.standartHeightBig,
+        width: AppSizes.standartWidthLargest,
         child: Positioned(
-          left: AppSizes.standartSpacing_1,
+          left: AppSizes.standartSpacingBig,
           child: Row(
             children: [
               SvgPicture.asset(
                 AppAssets.heartFullSvg,
                 color: AppColors.colorWhite,
               ),
-              const SizedBox(width: AppSizes.standartWidth_3),
+              StandartSizedBox.standartSizedBox,
               const Text(
                 AppTexts.textToFavorites,
                 style: TextStyle(

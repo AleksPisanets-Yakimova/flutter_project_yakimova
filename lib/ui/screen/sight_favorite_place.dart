@@ -6,7 +6,6 @@ import 'package:places_yakimova_project/main.dart';
 import 'package:places_yakimova_project/ui/screen/const/assets.dart';
 import 'package:places_yakimova_project/ui/screen/const/styles.dart';
 import 'package:places_yakimova_project/ui/screen/const/values.dart';
-import 'package:places_yakimova_project/ui/screen/rez/my_theme_data.dart';
 
 class SightCardFavoritePlace extends StatelessWidget {
   const SightCardFavoritePlace({
@@ -20,8 +19,6 @@ class SightCardFavoritePlace extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = MyApp.themeOf(context);
-
     return Padding(
       padding: const EdgeInsets.only(
         left: AppSizes.standartSpacingZero,
@@ -29,7 +26,6 @@ class SightCardFavoritePlace extends StatelessWidget {
         top: AppSizes.standartSpacingTextGalery,
       ),
       child: _ContentCard(
-        theme: theme,
         sight: sight,
         visited: visited,
       ),
@@ -40,41 +36,42 @@ class SightCardFavoritePlace extends StatelessWidget {
 class _ContentCard extends StatelessWidget {
   const _ContentCard({
     Key? key,
-    required this.theme,
     required this.sight,
     required this.visited,
   }) : super(key: key);
 
-  final MyThemeData theme;
   final Sight sight;
   final bool visited;
 
   @override
-  Widget build(BuildContext context) => Container(
-        decoration: BoxDecoration(
-          borderRadius:
-              const BorderRadius.all(Radius.circular(AppSizes.standartSpacing)),
-          color: theme.colorDecoration,
+  Widget build(BuildContext context) {
+    final theme = MyApp.themeOf(context);
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius:
+            const BorderRadius.all(Radius.circular(AppSizes.standartSpacing)),
+        color: theme.colorDecoration,
+      ),
+      clipBehavior: Clip.antiAlias,
+      child: AspectRatio(
+        aspectRatio: 6 / 3,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            _ImageAndItsParameters(
+                sight: sight,
+                visited: true,
+                color: theme.colorTextSightCategory),
+            _CardOptions(
+              sightName: sight.name,
+              visited: visited,
+              color: theme.colorTextTimePlan,
+            )
+          ],
         ),
-        clipBehavior: Clip.antiAlias,
-        child: AspectRatio(
-          aspectRatio: 6 / 3,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              _ImageAndItsParameters(
-                  sight: sight,
-                  visited: true,
-                  color: theme.colorTextSightCategory),
-              _CardOptions(
-                sightName: sight.name,
-                visited: visited,
-                color: theme.colorTextTimePlan,
-              )
-            ],
-          ),
-        ),
-      );
+      ),
+    );
+  }
 }
 
 class _ImageAndItsParameters extends StatelessWidget {

@@ -60,56 +60,56 @@ class _TabBarContent extends StatelessWidget {
   const _TabBarContent({
     Key? key,
     required this.tabController,
-    required this.theme,
   }) : super(key: key);
 
   final TabController tabController;
-  final MyThemeData theme;
 
   @override
-  Widget build(BuildContext context) => Expanded(
-        child: TabBarView(
-          controller: tabController,
-          children: [
-            SingleChildScrollView(
-              child: Column(
-                children: [
-                  SightCardFavoritePlace(
-                    sight: mocks[0],
-                    visited: true,
-                  ),
-                  SightCardFavoritePlace(
-                    sight: mocks[2],
-                    visited: true,
-                  ),
-                  SightCardFavoritePlace(
-                    sight: mocks[3],
-                    visited: true,
-                  ),
-                ],
-              ),
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: TabBarView(
+        controller: tabController,
+        children: [
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                SightCardFavoritePlace(
+                  sight: mocks[0],
+                  visited: true,
+                ),
+                SightCardFavoritePlace(
+                  sight: mocks[2],
+                  visited: true,
+                ),
+                SightCardFavoritePlace(
+                  sight: mocks[3],
+                  visited: true,
+                ),
+              ],
             ),
-            SingleChildScrollView(
-              child: Column(
-                children: [
-                  SightCardFavoritePlace(
-                    sight: mocks[3],
-                    visited: false,
-                  ),
-                  SightCardFavoritePlace(
-                    sight: mocks[5],
-                    visited: false,
-                  ),
-                  SightCardFavoritePlace(
-                    sight: mocks[4],
-                    visited: false,
-                  ),
-                ],
-              ),
+          ),
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                SightCardFavoritePlace(
+                  sight: mocks[3],
+                  visited: false,
+                ),
+                SightCardFavoritePlace(
+                  sight: mocks[5],
+                  visited: false,
+                ),
+                SightCardFavoritePlace(
+                  sight: mocks[4],
+                  visited: false,
+                ),
+              ],
             ),
-          ],
-        ),
-      );
+          ),
+        ],
+      ),
+    );
+  }
 }
 
 class _TabBarMain extends StatelessWidget {
@@ -128,10 +128,10 @@ class _TabBarMain extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              height: AppSizes.standartHeight,
+              height: AppSizes.standartHeightBig,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(
-                  AppSizes.standartHeight,
+                  AppSizes.standartHeightBig,
                 ),
                 color: theme.colorTabBarUnselectedBack,
               ),
@@ -140,7 +140,7 @@ class _TabBarMain extends StatelessWidget {
                 indicator: BoxDecoration(
                   color: theme.colorTabBarSelectedBack,
                   borderRadius: BorderRadius.circular(
-                    AppSizes.standartHeight,
+                    AppSizes.standartHeightBig,
                   ),
                 ),
                 tabs: [
@@ -156,7 +156,6 @@ class _TabBarMain extends StatelessWidget {
             ),
             _TabBarContent(
               tabController: tabController,
-              theme: theme,
             ),
           ],
         ),
