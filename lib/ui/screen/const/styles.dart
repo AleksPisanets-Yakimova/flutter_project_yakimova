@@ -20,41 +20,41 @@ class AppTypography {
     fontFamily: _defaultFontFamily,
     fontWeight: _bold,
     fontSize: 32,
-    height: 32 / 36,
   );
 
   static const textSightListCategory = TextStyle(
     fontFamily: _defaultFontFamily,
     fontWeight: _bold,
     fontSize: 14,
-    height: 14 / 18,
   );
 
   static const textSightListName = TextStyle(
     fontFamily: _defaultFontFamily,
     fontWeight: _bold,
     fontSize: 16,
-    height: 20 / 16,
   );
 
   static const textSightListTimeWork = TextStyle(
     fontFamily: _defaultFontFamily,
     fontWeight: _regular,
     fontSize: 14,
-    height: 14 / 18,
   );
 
   static const textSightVisFavorite = TextStyle(
     fontFamily: _defaultFontFamily,
-    fontWeight: _regular,
+    fontWeight: _bold,
     fontSize: 18,
-    height: 18 / 24,
   );
 
   static const textSightVisTab = TextStyle(
     fontFamily: _defaultFontFamily,
     fontWeight: _bold,
     fontSize: 14,
-    height: 14 / 18,
+  );
+
+  static const textSightCardCaption = TextStyle(
+    fontFamily: _defaultFontFamily,
+    fontWeight: _bold,
+    fontSize: 24,
   );
 }

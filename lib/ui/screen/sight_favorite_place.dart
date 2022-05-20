@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:places_yakimova_project/domain/sight.dart';
 
-import 'package:places_yakimova_project/main.dart';
 import 'package:places_yakimova_project/ui/screen/const/assets.dart';
-import 'package:places_yakimova_project/ui/screen/const/styles.dart';
 import 'package:places_yakimova_project/ui/screen/const/values.dart';
 
 class SightCardFavoritePlace extends StatelessWidget {
@@ -45,12 +43,12 @@ class _ContentCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = MyApp.themeOf(context);
     return Container(
       decoration: BoxDecoration(
-        borderRadius:
-            const BorderRadius.all(Radius.circular(AppSizes.standartSpacing)),
-        color: theme.colorDecoration,
+        borderRadius: const BorderRadius.all(
+          Radius.circular(AppSizes.standartSpacing),
+        ),
+        color: Theme.of(context).cardColor,
       ),
       clipBehavior: Clip.antiAlias,
       child: AspectRatio(
@@ -59,13 +57,12 @@ class _ContentCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             _ImageAndItsParameters(
-                sight: sight,
-                visited: true,
-                color: theme.colorTextSightCategory),
+              sight: sight,
+              visited: true,
+            ),
             _CardOptions(
               sightName: sight.name,
               visited: visited,
-              color: theme.colorTextTimePlan,
             )
           ],
         ),
@@ -79,12 +76,10 @@ class _ImageAndItsParameters extends StatelessWidget {
     Key? key,
     required this.sight,
     required this.visited,
-    required this.color,
   }) : super(key: key);
 
   final Sight sight;
   final bool visited;
-  final Color color;
 
   @override
   Widget build(BuildContext context) => Expanded(
@@ -103,7 +98,7 @@ class _ImageAndItsParameters extends StatelessWidget {
               top: AppSizes.standartSpacing,
               child: Text(
                 mapSightTypeToString[sight.type]!,
-                style: AppTypography.textSightListCategory.withColor(color),
+                style: Theme.of(context).textTheme.button,
               ),
             ),
             Positioned(
@@ -131,12 +126,10 @@ class _CardOptions extends StatelessWidget {
     Key? key,
     required this.sightName,
     required this.visited,
-    required this.color,
   }) : super(key: key);
 
   final String sightName;
   final bool visited;
-  final Color color;
 
   @override
   Widget build(BuildContext context) => Expanded(
@@ -147,21 +140,21 @@ class _CardOptions extends StatelessWidget {
             children: [
               Text(
                 sightName,
-                style: AppTypography.textSightListName,
+                style: Theme.of(context).textTheme.headline2,
               ),
               const SizedBox(height: AppSizes.standartSizedBox),
               if (visited)
                 Expanded(
                   child: Text(
                     AppTexts.textTimePlan,
-                    style: AppTypography.textSightListTimeWork.withColor(color),
+                    style: Theme.of(context).textTheme.headline4,
                   ),
                 ),
               const SizedBox(height: AppSizes.standartSizedBox),
               Expanded(
                 child: Text(
                   AppTexts.textTimeWork,
-                  style: Theme.of(context).textTheme.bodyText1,
+                  style: Theme.of(context).textTheme.headline3,
                 ),
               ),
             ],

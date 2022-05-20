@@ -13,11 +13,7 @@ class MyBottomNavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
     return BottomNavigationBar(
-      type: BottomNavigationBarType
-          .fixed, //изменение размера и положения иконки снизу
       currentIndex: currentIndex,
       showSelectedLabels: false,
       showUnselectedLabels: false,
@@ -27,11 +23,11 @@ class MyBottomNavigationBar extends StatelessWidget {
           icon: currentIndex == 0
               ? SvgPicture.asset(
                   AppAssets.listFullSvg,
-                  color: theme.bottomNavigationBarTheme.unselectedItemColor,
+                  color: Theme.of(context).navigationBarTheme.indicatorColor,
                 )
               : SvgPicture.asset(
                   AppAssets.listSvg,
-                  color: theme.bottomNavigationBarTheme.selectedItemColor,
+                  color: Theme.of(context).navigationBarTheme.backgroundColor,
                 ),
           label: '',
         ),
@@ -39,11 +35,11 @@ class MyBottomNavigationBar extends StatelessWidget {
           icon: currentIndex == 1
               ? SvgPicture.asset(
                   AppAssets.heartFullSvg,
-                  color: theme.bottomNavigationBarTheme.unselectedItemColor,
+                  color: Theme.of(context).navigationBarTheme.backgroundColor,
                 )
               : SvgPicture.asset(
                   AppAssets.likeBlackSvg,
-                  color: theme.bottomNavigationBarTheme.selectedItemColor,
+                  color: Theme.of(context).navigationBarTheme.indicatorColor,
                 ),
           label: '',
         ),

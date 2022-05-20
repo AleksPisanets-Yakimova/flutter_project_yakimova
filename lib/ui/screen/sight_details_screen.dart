@@ -21,7 +21,6 @@ class SightDetailsScreen extends StatefulWidget {
 class _SightDetailsScreenState extends State<SightDetailsScreen> {
   @override
   Widget build(BuildContext context) => Scaffold(
-        backgroundColor: AppColors.colorBlack,
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -34,14 +33,14 @@ class _SightDetailsScreenState extends State<SightDetailsScreen> {
                   children: [
                     Text(
                       widget.sight.name,
-                      style: Theme.of(context).textTheme.headline5,
+                      style: Theme.of(context).textTheme.headline6,
                     ),
                     const SizedBox(height: AppSizes.standartSizedBox),
                     _TypeCard(type: mapSightTypeToString[widget.sight.type]!),
                     const SizedBox(height: AppSizes.standartSpacingTextGalery),
                     Text(
                       widget.sight.details,
-                      style: Theme.of(context).textTheme.bodyText1,
+                      style: Theme.of(context).textTheme.bodyText2,
                     ),
                     const SizedBox(height: AppSizes.standartSpacingTextGalery),
                     _ButtonRoute(),
@@ -80,17 +79,19 @@ class _Image extends StatelessWidget {
             child: Container(
               width: AppSizes.standartSizeIndent,
               height: AppSizes.standartSizeIndent,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 borderRadius:
                     BorderRadius.all(Radius.circular(AppSizes.standartRadius)),
-                color: AppColors.colorBlack,
+                color: Theme.of(context).colorScheme.background,
               ),
               child: Center(
-                child: SvgPicture.asset(AppAssets.backArrowSvg,
-                    color: AppColors.colorWhite),
+                child: SvgPicture.asset(
+                  AppAssets.backArrowSvg,
+                  color: Theme.of(context).colorScheme.secondary,
+                ),
               ),
             ),
-          )
+          ),
         ],
       );
 }
@@ -108,18 +109,12 @@ class _TypeCard extends StatelessWidget {
         children: [
           Text(
             type,
-            style: const TextStyle(
-              color: AppColors.colorSlateBlue,
-              fontSize: AppSizes.standartTextSize,
-            ),
+            style: Theme.of(context).textTheme.bodyText1,
           ),
           const SizedBox(width: AppSizes.standartSpacing),
-          const Text(
+          Text(
             AppTexts.textTimeWork,
-            style: TextStyle(
-              color: AppColors.colorSlateBlue,
-              fontSize: AppSizes.standartTextSize,
-            ),
+            style: Theme.of(context).textTheme.headline3,
           ),
         ],
       );
@@ -134,21 +129,18 @@ class _ButtonRoute extends StatelessWidget {
               padding: const EdgeInsets.all(AppSizes.standartSpacing),
               child: Container(
                 height: AppSizes.standartHeightBigger,
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(12)),
-                  color: AppColors.colorMediumSeaGreen,
+                  color: Theme.of(context).buttonColor,
                 ),
                 child: Row(
                   children: [
                     StandartSizedBox.standartSizedBoxBigger,
                     SvgPicture.asset(AppAssets.routeSvg),
                     StandartSizedBox.standartSizedBoxBig,
-                    const Text(
+                    Text(
                       AppTexts.textBuildRroute,
-                      style: TextStyle(
-                          color: AppColors.colorWhite,
-                          fontSize: AppSizes.standartTextSize,
-                          fontWeight: FontWeight.bold),
+                      style: Theme.of(context).textTheme.button,
                     ),
                   ],
                 ),
@@ -163,10 +155,10 @@ class _DividingLine extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Container(
         height: AppSizes.standartHeight,
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           borderRadius:
               BorderRadius.all(Radius.circular(AppSizes.standartRadiusBig)),
-          color: AppColors.colorSlateBlue,
+          color: Theme.of(context).dividerColor,
         ),
       );
 }
@@ -191,12 +183,9 @@ class _ButtonPlan extends StatelessWidget {
             const SizedBox(width: AppSizes.standartSizeIndent),
             SvgPicture.asset(AppAssets.calendarSvg),
             StandartSizedBox.standartSizedBox,
-            const Text(
+            Text(
               AppTexts.textToSchedule,
-              style: TextStyle(
-                color: AppColors.colorSlateBlue,
-                fontSize: AppSizes.standartTextSize,
-              ),
+              style: Theme.of(context).textTheme.subtitle1,
             ),
           ],
         ),
@@ -214,15 +203,11 @@ class _ButtonFavorites extends StatelessWidget {
             children: [
               SvgPicture.asset(
                 AppAssets.heartFullSvg,
-                color: AppColors.colorWhite,
               ),
               StandartSizedBox.standartSizedBox,
-              const Text(
+              Text(
                 AppTexts.textToFavorites,
-                style: TextStyle(
-                  color: AppColors.colorWhite,
-                  fontSize: AppSizes.standartTextSize,
-                ),
+                style: Theme.of(context).textTheme.subtitle1,
               ),
             ],
           ),

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:places_yakimova_project/domain/sight.dart';
 
 class AppSizes {
@@ -53,3 +54,10 @@ const mapSightTypeToString = {
   SightType.park: 'парк',
   SightType.restaurant: 'ресторан',
 };
+
+class StandartSizedBox {
+  static const standartSizedBox = SizedBox(width: AppSizes.standartWidth);
+  static const standartSizedBoxBig = SizedBox(width: AppSizes.standartWidthBig);
+  static const standartSizedBoxBigger =
+      SizedBox(width: AppSizes.standartWidthBigger);
+}

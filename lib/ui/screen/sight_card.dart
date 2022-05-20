@@ -3,9 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:places_yakimova_project/domain/sight.dart';
 
-import 'package:places_yakimova_project/main.dart';
 import 'package:places_yakimova_project/ui/screen/const/assets.dart';
-import 'package:places_yakimova_project/ui/screen/const/styles.dart';
+import 'package:places_yakimova_project/ui/screen/const/colors.dart';
 import 'package:places_yakimova_project/ui/screen/const/values.dart';
 
 class SightCard extends StatelessWidget {
@@ -19,8 +18,6 @@ class SightCard extends StatelessWidget {
   SightType? get titleText => null;
   @override
   Widget build(BuildContext context) {
-    final theme = MyApp.themeOf(context);
-
     return Padding(
       padding: const EdgeInsets.only(
         left: AppSizes.standartSpacing,
@@ -31,7 +28,7 @@ class SightCard extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius:
               const BorderRadius.all(Radius.circular(AppSizes.standartSpacing)),
-          color: theme.colorDecoration,
+          color: Theme.of(context).colorScheme.background,
         ),
         child: AspectRatio(
           aspectRatio: 6 / 3,
@@ -41,11 +38,9 @@ class SightCard extends StatelessWidget {
               _ImageCard(
                 image: sight.urls[0],
                 type: mapSightTypeToString[sight.type]!,
-                colorCard: theme.colorTextSightCategory,
               ),
               _DescriptionCard(
                 name: sight.name,
-                colorText: theme.colorTextTitle,
               ),
             ],
           ),
@@ -66,23 +61,32 @@ class _ImageCard extends StatelessWidget {
     Key? key,
     required this.image,
     required this.type,
-    required this.colorCard,
   }) : super(key: key);
 
   final String image;
   final String type;
-  final Color colorCard;
 
   @override
   Widget build(BuildContext context) => Expanded(
         child: Stack(
           children: [
             Positioned.fill(
-              child: Image.network(
-                image,
-                fit: BoxFit.fitWidth,
-                loadingBuilder: (context, child, progress) =>
-                    progress == null ? child : const LinearProgressIndicator(),
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(AppSizes.standartSpacing),
+                    topRight: Radius.circular(
+                      AppSizes.standartSpacing,
+                    ),
+                  ),
+                ),
+                child: Image.network(
+                  image,
+                  fit: BoxFit.fitWidth,
+                  loadingBuilder: (context, child, progress) => progress == null
+                      ? child
+                      : const LinearProgressIndicator(),
+                ),
               ),
             ),
             Positioned(
@@ -90,7 +94,7 @@ class _ImageCard extends StatelessWidget {
               top: AppSizes.standartSpacing,
               child: Text(
                 type,
-                style: AppTypography.textSightListCategory.withColor(colorCard),
+                style: Theme.of(context).textTheme.headline1,
               ),
             ),
             Positioned(
@@ -107,11 +111,9 @@ class _DescriptionCard extends StatelessWidget {
   const _DescriptionCard({
     Key? key,
     required this.name,
-    required this.colorText,
   }) : super(key: key);
 
   final String name;
-  final Color colorText;
 
   @override
   Widget build(BuildContext context) => Expanded(
@@ -121,13 +123,13 @@ class _DescriptionCard extends StatelessWidget {
               Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
             Text(
               name,
-              style: AppTypography.textSightListName.withColor(colorText),
+              style: Theme.of(context).textTheme.headline2,
             ),
             const SizedBox(height: AppSizes.standartSizedBox),
-            const Expanded(
+            Expanded(
               child: Text(
                 AppTexts.textTimeWork,
-                style: AppTypography.textSightListTimeWork,
+                style: Theme.of(context).textTheme.headline3,
               ),
             ),
           ]),
