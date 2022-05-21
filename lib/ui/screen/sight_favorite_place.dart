@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:places_yakimova_project/domain/sight.dart';
 
 import 'package:places_yakimova_project/ui/screen/const/assets.dart';
+import 'package:places_yakimova_project/ui/screen/const/value_text.dart';
 import 'package:places_yakimova_project/ui/screen/const/values.dart';
 
 class SightCardFavoritePlace extends StatelessWidget {

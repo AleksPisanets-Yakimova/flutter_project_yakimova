@@ -11,16 +11,16 @@ class AppTheme {
 
   /// Светлая тема.
   static ThemeData _buildTheme() {
-    final _base = ThemeData.light();
-    return _base.copyWith(
-      appBarTheme: _base.appBarTheme.copyWith(
+    final base = ThemeData.light();
+    return base.copyWith(
+      appBarTheme: base.appBarTheme.copyWith(
         titleTextStyle:
             AppTypography.textSightVisFavorite.withColor(AppColors.colorBlack),
         backgroundColor: AppColors.colorWhite,
         elevation: 0,
       ),
       brightness: Brightness.light,
-      tabBarTheme: _base.tabBarTheme.copyWith(
+      tabBarTheme: base.tabBarTheme.copyWith(
         indicator: BoxDecoration(
           color: AppColors.colorDarkSlateGray,
           borderRadius: BorderRadius.circular(
@@ -29,15 +29,15 @@ class AppTheme {
         ),
       ),
       backgroundColor: AppColors.colorWhite,
-      textTheme: _buildTextTheme(_base.textTheme),
-      colorScheme: _base.colorScheme.copyWith(
+      textTheme: _buildTextTheme(base.textTheme),
+      colorScheme: base.colorScheme.copyWith(
         background: AppColors.colorDackBlueMain,
         secondary: AppColors.colorSlateBlue,
       ),
       cardColor: AppColors.colorWhiteSmoke,
       buttonColor: AppColors.colorMediumSeaGreen,
       dividerColor: AppColors.colorSlateBlue.withOpacity(0.24),
-      navigationBarTheme: _base.navigationBarTheme.copyWith(
+      navigationBarTheme: base.navigationBarTheme.copyWith(
         backgroundColor: AppColors.colorDackBlueMain,
         indicatorColor: AppColors.colorSlateBlue,
       ),
@@ -73,10 +73,10 @@ class AppTheme {
 
   /// Темная тема.
   static ThemeData _buildThemeDark() {
-    final _base = ThemeData.dark();
+    final base = ThemeData.dark();
 
-    return _base.copyWith(
-      appBarTheme: _base.appBarTheme.copyWith(
+    return base.copyWith(
+      appBarTheme: base.appBarTheme.copyWith(
         titleTextStyle:
             AppTypography.textSightVisFavorite.withColor(AppColors.colorBlack),
         backgroundColor: AppColors.colorNavyBlue,
@@ -84,7 +84,7 @@ class AppTheme {
       ),
       brightness: Brightness.dark,
       backgroundColor: AppColors.colorNavyBlue,
-      tabBarTheme: _base.tabBarTheme.copyWith(
+      tabBarTheme: base.tabBarTheme.copyWith(
         indicator: BoxDecoration(
           color: AppColors.colorWhite,
           borderRadius: BorderRadius.circular(
@@ -92,15 +92,15 @@ class AppTheme {
           ),
         ),
       ),
-      textTheme: _buildTextThemeDark(_base.textTheme),
-      colorScheme: _base.colorScheme.copyWith(
+      textTheme: _buildTextThemeDark(base.textTheme),
+      colorScheme: base.colorScheme.copyWith(
         background: AppColors.colorWhiteSmoke,
         secondary: AppColors.colorWhite,
       ),
       cardColor: AppColors.colorAlmostBlack,
       buttonColor: AppColors.colorMediumSeaGreen,
       dividerColor: AppColors.colorSlateBlue.withOpacity(0.24),
-      navigationBarTheme: _base.navigationBarTheme.copyWith(
+      navigationBarTheme: base.navigationBarTheme.copyWith(
         backgroundColor: AppColors.colorWhiteSmoke,
         indicatorColor: AppColors.colorWhite,
       ),

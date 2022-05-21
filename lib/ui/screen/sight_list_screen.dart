@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:places_yakimova_project/domain/sight.dart';
-import 'package:places_yakimova_project/main.dart';
 import 'package:places_yakimova_project/mocks.dart';
-import 'package:places_yakimova_project/ui/screen/const/styles.dart';
+import 'package:places_yakimova_project/ui/screen/const/value_text.dart';
 import 'package:places_yakimova_project/ui/screen/const/values.dart';
 import 'package:places_yakimova_project/ui/screen/my_bottom_navigation_bar.dart';
-import 'package:places_yakimova_project/ui/screen/rez/themes.dart';
 import 'package:places_yakimova_project/ui/screen/sight_card.dart';
 
 class SightListScreen extends StatefulWidget {

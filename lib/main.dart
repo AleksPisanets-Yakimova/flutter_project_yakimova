@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:places_yakimova_project/domain/sight.dart';
 import 'package:places_yakimova_project/mocks.dart';
-// import 'package:places_yakimova_project/ui/screen/rez/dark_theme.dart';
-// import 'package:places_yakimova_project/ui/screen/rez/light_theme.dart';
+import 'package:places_yakimova_project/ui/screen/const/value_text.dart';
 import 'package:places_yakimova_project/ui/screen/rez/themes.dart';
 
 import 'package:places_yakimova_project/ui/screen/sight_details_screen.dart';
@@ -14,43 +13,16 @@ void main() {
 }
 
 class MyApp extends StatefulWidget {
-  static MyAppState of(BuildContext context) =>
-      context.findAncestorStateOfType<MyAppState>()!;
-
-  // static MyThemeData themeOf(BuildContext context) =>
-  //     context.findAncestorStateOfType<MyAppState>()!.myTheme;
-
   @override
   State<MyApp> createState() => MyAppState();
 }
 
 class MyAppState extends State<MyApp> {
-  // bool _isDarkMode = true;
-  // late MyThemeData myTheme;
-
-  // @override
-  // void initState() {
-  //   super.initState();
-
-  //   _updateTheme();
-  // }
-
-  // void toogleTheme() {
-  //   setState(() {
-  //     _isDarkMode = !_isDarkMode;
-  //     _updateTheme();
-  //   });
-  // }
-
-  // void _updateTheme() {
-  //   myTheme = _isDarkMode ? createDarkTheme() : createLightTheme();
-  // }
-
   @override
   Widget build(BuildContext context) => MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        theme: AppTheme.lightTheme, //AppTheme.darkTheme //myTheme.app,
+        title: AppTexts.title,
+        theme: AppTheme.lightTheme, //AppTheme.darkTheme
 
         // home: SightListScreen(), //Список интересных мест +++++++
         // home: SightDetailsScreen(
