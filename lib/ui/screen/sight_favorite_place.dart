@@ -59,7 +59,7 @@ class _ContentCard extends StatelessWidget {
           children: <Widget>[
             _ImageAndItsParameters(
               sight: sight,
-              visited: true,
+              visited: visited,
             ),
             _CardOptions(
               sightName: sight.name,
@@ -94,25 +94,36 @@ class _ImageAndItsParameters extends StatelessWidget {
                     progress == null ? child : const LinearProgressIndicator(),
               ),
             ),
-            Positioned(
-              left: AppSizes.standartSpacing,
-              top: AppSizes.standartSpacing,
-              child: Text(
-                mapSightTypeToString[sight.type]!,
-                style: Theme.of(context).textTheme.button,
+            FlatButton(
+              onPressed: () {
+                print('Тип карточки. Список интересных мест. Хочу посетить.');
+              },
+              child: Positioned(
+                left: AppSizes.standartSpacing,
+                top: AppSizes.standartSpacing,
+                child: Text(
+                  mapSightTypeToString[sight.type]!,
+                  style: Theme.of(context).textTheme.button,
+                ),
               ),
             ),
             Positioned(
-              right: AppSizes.standartSpacing,
-              top: AppSizes.standartSpacing,
+              right: 15,
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   if (visited == true)
-                    SvgPicture.asset(AppAssets.calendarWhiteSvg)
+                    FlatButton(
+                        onPressed: () {
+                          print('Запланировать иконка. Хочу посетить.');
+                        },
+                        child: SvgPicture.asset(AppAssets.calendarWhiteSvg))
                   else
-                    SvgPicture.asset(AppAssets.shareSvg),
-                  const SizedBox(width: AppSizes.standartSizeBox),
+                    FlatButton(
+                        onPressed: () {
+                          print('Поделиться иконка. Хочу посетить.');
+                        },
+                        child: SvgPicture.asset(AppAssets.shareSvg)),
                   SvgPicture.asset(AppAssets.outputSvg),
                 ],
               ),

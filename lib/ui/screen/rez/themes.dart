@@ -31,7 +31,7 @@ class AppTheme {
       backgroundColor: AppColors.colorWhite,
       textTheme: _buildTextTheme(base.textTheme),
       colorScheme: base.colorScheme.copyWith(
-        background: AppColors.colorDackBlueMain,
+        background: AppColors.colorWhiteSmoke,
         secondary: AppColors.colorSlateBlue,
       ),
       cardColor: AppColors.colorWhiteSmoke,

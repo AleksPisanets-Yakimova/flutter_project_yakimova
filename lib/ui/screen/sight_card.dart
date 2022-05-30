@@ -90,17 +90,22 @@ class _ImageCard extends StatelessWidget {
               ),
             ),
             Positioned(
-              left: AppSizes.standartSpacing,
-              top: AppSizes.standartSpacing,
-              child: Text(
-                type,
-                style: Theme.of(context).textTheme.headline1,
-              ),
+              child: FlatButton(
+                  child: Text(
+                    type,
+                    style: Theme.of(context).textTheme.headline1,
+                  ),
+                  onPressed: () {
+                    print('Тип карточки. Список интересных мест.');
+                  }),
             ),
             Positioned(
-              right: AppSizes.standartSpacing,
-              top: AppSizes.standartSpacing,
-              child: SvgPicture.asset(AppAssets.likeWhiteSvg),
+              right: 0,
+              child: FlatButton(
+                  child: SvgPicture.asset(AppAssets.likeWhiteSvg),
+                  onPressed: () {
+                    print('Лайк. Список интересных мест.');
+                  }),
             ),
           ],
         ),

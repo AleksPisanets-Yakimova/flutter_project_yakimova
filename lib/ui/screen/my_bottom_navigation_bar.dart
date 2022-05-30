@@ -21,25 +21,45 @@ class MyBottomNavigationBar extends StatelessWidget {
       items: [
         BottomNavigationBarItem(
           icon: currentIndex == 0
-              ? SvgPicture.asset(
-                  AppAssets.listFullSvg,
-                  color: Theme.of(context).navigationBarTheme.indicatorColor,
+              ? FlatButton(
+                  onPressed: () {
+                    print('Список интересных мест. BottomNavigationBar.');
+                  },
+                  child: SvgPicture.asset(
+                    AppAssets.listFullSvg,
+                    color: Theme.of(context).navigationBarTheme.indicatorColor,
+                  ),
                 )
-              : SvgPicture.asset(
-                  AppAssets.listSvg,
-                  color: Theme.of(context).navigationBarTheme.backgroundColor,
+              : FlatButton(
+                  onPressed: () {
+                    print('Список интересных мест. BottomNavigationBar.');
+                  },
+                  child: SvgPicture.asset(
+                    AppAssets.listSvg,
+                    color: Theme.of(context).navigationBarTheme.backgroundColor,
+                  ),
                 ),
           label: '',
         ),
         BottomNavigationBarItem(
           icon: currentIndex == 1
-              ? SvgPicture.asset(
-                  AppAssets.heartFullSvg,
-                  color: Theme.of(context).navigationBarTheme.backgroundColor,
+              ? FlatButton(
+                  onPressed: () {
+                    print('Избранное. BottomNavigationBar.');
+                  },
+                  child: SvgPicture.asset(
+                    AppAssets.heartFullSvg,
+                    color: Theme.of(context).navigationBarTheme.backgroundColor,
+                  ),
                 )
-              : SvgPicture.asset(
-                  AppAssets.likeBlackSvg,
-                  color: Theme.of(context).navigationBarTheme.indicatorColor,
+              : FlatButton(
+                  onPressed: () {
+                    print('Избранное. BottomNavigationBar.');
+                  },
+                  child: SvgPicture.asset(
+                    AppAssets.likeBlackSvg,
+                    color: Theme.of(context).navigationBarTheme.indicatorColor,
+                  ),
                 ),
           label: '',
         ),

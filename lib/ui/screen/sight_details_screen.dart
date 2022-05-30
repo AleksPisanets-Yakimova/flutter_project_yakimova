@@ -85,9 +85,14 @@ class _Image extends StatelessWidget {
                 color: Theme.of(context).colorScheme.background,
               ),
               child: Center(
-                child: SvgPicture.asset(
-                  AppAssets.backArrowSvg,
-                  color: Theme.of(context).colorScheme.secondary,
+                child: FlatButton(
+                  child: SvgPicture.asset(
+                    AppAssets.backArrowSvg,
+                    color: Theme.of(context).colorScheme.secondary,
+                  ),
+                  onPressed: () {
+                    print('Назад. Детализация места.');
+                  },
                 ),
               ),
             ),
@@ -127,26 +132,31 @@ class _ButtonRoute extends StatelessWidget {
           Center(
             child: Padding(
               padding: const EdgeInsets.all(AppSizes.standartSpacing),
-              child: Container(
-                height: AppSizes.standartHeightBigger,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(12)),
-                  color: Theme.of(context).buttonColor,
-                ),
-                child: Row(
-                  children: [
-                    StandartSizedBox.standartSizedBoxBigger,
-                    SvgPicture.asset(AppAssets.routeSvg),
-                    StandartSizedBox.standartSizedBoxBig,
-                    Text(
-                      AppTexts.textBuildRroute,
-                      style: Theme.of(context).textTheme.button,
+              child: FlatButton(
+                  child: Container(
+                    height: AppSizes.standartHeightBigger,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(12)),
+                      color: Theme.of(context).buttonColor,
                     ),
-                  ],
-                ),
-              ),
+                    child: Row(
+                      children: [
+                        StandartSizedBox.standartSizedBoxBigger,
+                        SvgPicture.asset(AppAssets.routeSvg),
+                        StandartSizedBox.standartSizedBoxBig,
+                        Text(
+                          AppTexts.textBuildRroute,
+                          style: Theme.of(context).textTheme.button,
+                        ),
+                      ],
+                    ),
+                  ),
+                  onPressed: () {
+                    print('Построить маршрут. Детализация места.');
+                  }),
             ),
           ),
+          // ),
         ],
       );
 }
@@ -167,8 +177,20 @@ class _FooterButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Row(
         children: [
-          Expanded(child: _ButtonPlan()),
-          Expanded(child: _ButtonFavorites()),
+          Expanded(
+            child: FlatButton(
+                child: _ButtonPlan(),
+                onPressed: () {
+                  print('Запланировать. Детализация места.');
+                }),
+          ),
+          Expanded(
+            child: FlatButton(
+                onPressed: () {
+                  print('В избраное. Детализация места.');
+                },
+                child: _ButtonFavorites()),
+          ),
         ],
       );
 }
