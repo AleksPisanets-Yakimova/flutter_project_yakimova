@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:places_yakimova_project/mocks.dart';
+import 'package:places_yakimova_project/mocks/mocks.dart';
 import 'package:places_yakimova_project/ui/screen/const/value_text.dart';
 import 'package:places_yakimova_project/ui/screen/const/values.dart';
 import 'package:places_yakimova_project/ui/screen/my_bottom_navigation_bar.dart';
-import 'package:places_yakimova_project/ui/screen/sight_card.dart';
+import 'package:places_yakimova_project/ui/screen/sight_favorite_place.dart';
 
 class SightListScreen extends StatefulWidget {
   @override
@@ -48,8 +48,16 @@ class _Content extends StatelessWidget {
           ),
         ),
         for (final sight in mocks)
-          SightCard(
-            sight: sight,
+          Padding(
+            padding: const EdgeInsets.only(
+              right: AppSizes.standartSpacing,
+              left: AppSizes.standartSpacing,
+            ),
+            child: SightCardFavoritePlace(
+              sight: sight,
+              visited: false,
+              interestingPlaces: true,
+            ),
           ),
         const SizedBox(height: AppSizes.standartSpacing),
       ],

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:places_yakimova_project/mocks.dart';
+import 'package:places_yakimova_project/mocks/mocks.dart';
 import 'package:places_yakimova_project/ui/screen/const/value_text.dart';
 import 'package:places_yakimova_project/ui/screen/const/values.dart';
 import 'package:places_yakimova_project/ui/screen/my_bottom_navigation_bar.dart';
@@ -64,14 +64,17 @@ class VisitingScreenState extends State with SingleTickerProviderStateMixin {
                   SightCardFavoritePlace(
                     sight: mocks[0],
                     visited: true,
+                    interestingPlaces: false,
                   ),
                   SightCardFavoritePlace(
                     sight: mocks[2],
                     visited: true,
+                    interestingPlaces: false,
                   ),
                   SightCardFavoritePlace(
                     sight: mocks[3],
                     visited: true,
+                    interestingPlaces: false,
                   ),
                 ],
               ),
@@ -82,14 +85,17 @@ class VisitingScreenState extends State with SingleTickerProviderStateMixin {
                   SightCardFavoritePlace(
                     sight: mocks[3],
                     visited: false,
+                    interestingPlaces: false,
                   ),
                   SightCardFavoritePlace(
                     sight: mocks[5],
                     visited: false,
+                    interestingPlaces: false,
                   ),
                   SightCardFavoritePlace(
                     sight: mocks[4],
                     visited: false,
+                    interestingPlaces: false,
                   ),
                 ],
               ),

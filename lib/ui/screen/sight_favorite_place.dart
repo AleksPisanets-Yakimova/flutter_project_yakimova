@@ -11,10 +11,12 @@ class SightCardFavoritePlace extends StatelessWidget {
     Key? key,
     required this.sight,
     required this.visited,
+    required this.interestingPlaces,
   }) : super(key: key);
 
   final Sight sight;
   final bool visited;
+  final bool interestingPlaces;
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +29,7 @@ class SightCardFavoritePlace extends StatelessWidget {
       child: _ContentCard(
         sight: sight,
         visited: visited,
+        interestingPlaces: interestingPlaces,
       ),
     );
   }
@@ -37,10 +40,12 @@ class _ContentCard extends StatelessWidget {
     Key? key,
     required this.sight,
     required this.visited,
+    required this.interestingPlaces,
   }) : super(key: key);
 
   final Sight sight;
   final bool visited;
+  final bool interestingPlaces;
 
   @override
   Widget build(BuildContext context) {
@@ -60,6 +65,7 @@ class _ContentCard extends StatelessWidget {
             _ImageAndItsParameters(
               sight: sight,
               visited: visited,
+              interestingPlaces: interestingPlaces,
             ),
             _CardOptions(
               sightName: sight.name,
@@ -77,10 +83,12 @@ class _ImageAndItsParameters extends StatelessWidget {
     Key? key,
     required this.sight,
     required this.visited,
+    required this.interestingPlaces,
   }) : super(key: key);
 
   final Sight sight;
   final bool visited;
+  final bool interestingPlaces;
 
   @override
   Widget build(BuildContext context) => Expanded(
@@ -94,9 +102,9 @@ class _ImageAndItsParameters extends StatelessWidget {
                     progress == null ? child : const LinearProgressIndicator(),
               ),
             ),
-            FlatButton(
+            TextButton(
               onPressed: () {
-                print('Тип карточки. Список интересных мест. Хочу посетить.');
+                print('Тип карточки.');
               },
               child: Positioned(
                 left: AppSizes.standartSpacing,
@@ -108,23 +116,35 @@ class _ImageAndItsParameters extends StatelessWidget {
               ),
             ),
             Positioned(
-              right: 15,
+              right: AppSizes.standartSpacing,
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  if (visited == true)
-                    FlatButton(
-                        onPressed: () {
-                          print('Запланировать иконка. Хочу посетить.');
-                        },
-                        child: SvgPicture.asset(AppAssets.calendarWhiteSvg))
+                  if (!interestingPlaces)
+                    if (visited == true)
+                      TextButton(
+                          onPressed: () {
+                            print('Запланировать иконка. Хочу посетить.');
+                          },
+                          child: SvgPicture.asset(AppAssets.calendarWhiteSvg))
+                    else
+                      TextButton(
+                          onPressed: () {
+                            print('Поделиться иконка. Хочу посетить.');
+                          },
+                          child: SvgPicture.asset(AppAssets.shareSvg))
                   else
-                    FlatButton(
+                    TextButton(
                         onPressed: () {
-                          print('Поделиться иконка. Хочу посетить.');
+                          print('Лайк.');
                         },
-                        child: SvgPicture.asset(AppAssets.shareSvg)),
-                  SvgPicture.asset(AppAssets.outputSvg),
+                        child: SvgPicture.asset(AppAssets.likeWhiteSvg)),
+                  if (!interestingPlaces)
+                    TextButton(
+                        onPressed: () {
+                          print('Удалить.');
+                        },
+                        child: SvgPicture.asset(AppAssets.outputSvg)),
                 ],
               ),
             ),

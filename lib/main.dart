@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:places_yakimova_project/domain/sight.dart';
-import 'package:places_yakimova_project/mocks.dart';
+import 'package:places_yakimova_project/mocks/mocks.dart';
 import 'package:places_yakimova_project/ui/screen/const/value_text.dart';
+import 'package:places_yakimova_project/ui/screen/filter_screen.dart';
 import 'package:places_yakimova_project/ui/screen/rez/themes.dart';
 
 import 'package:places_yakimova_project/ui/screen/sight_details_screen.dart';
@@ -29,6 +30,7 @@ class MyAppState extends State<MyApp> {
         //   //++++++++
         //   sight: mocks.first,
         // ), // Детлизация места
-        home: VisitingScreen(), // посетить / хочу посетить ++++
+        // home: VisitingScreen(), // посетить / хочу посетить ++++
+        home: FilterScreen(),
       );
 }

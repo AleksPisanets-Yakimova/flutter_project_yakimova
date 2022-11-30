@@ -13,6 +13,12 @@ class AppTexts {
   static const String textVisited = 'Посетил';
   static const String textWantToVisit = 'Хочу посетить';
   static const String title = 'Flutter Demo';
+
+  static const String textCategories = 'Категории';
+  static const String textDistance = 'Расстояние';
+
+  static const String textClear = 'Очистить';
+  static const String textShow = 'Показать';
 }
 
 const mapSightTypeToString = {

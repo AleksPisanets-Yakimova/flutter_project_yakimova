@@ -57,4 +57,16 @@ class AppTypography {
     fontWeight: _bold,
     fontSize: 24,
   );
+
+  static const textFilter = TextStyle(
+    fontFamily: _defaultFontFamily,
+    fontWeight: _regular,
+    fontSize: 12,
+  );
+
+  static const textFilterDistance = TextStyle(
+    fontFamily: _defaultFontFamily,
+    fontWeight: _regular,
+    fontSize: 16,
+  );
 }

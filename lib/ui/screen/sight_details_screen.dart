@@ -85,7 +85,7 @@ class _Image extends StatelessWidget {
                 color: Theme.of(context).colorScheme.background,
               ),
               child: Center(
-                child: FlatButton(
+                child: TextButton(
                   child: SvgPicture.asset(
                     AppAssets.backArrowSvg,
                     color: Theme.of(context).colorScheme.secondary,
@@ -132,7 +132,7 @@ class _ButtonRoute extends StatelessWidget {
           Center(
             child: Padding(
               padding: const EdgeInsets.all(AppSizes.standartSpacing),
-              child: FlatButton(
+              child: TextButton(
                   child: Container(
                     height: AppSizes.standartHeightBigger,
                     decoration: BoxDecoration(
@@ -178,14 +178,14 @@ class _FooterButtons extends StatelessWidget {
   Widget build(BuildContext context) => Row(
         children: [
           Expanded(
-            child: FlatButton(
+            child: TextButton(
                 child: _ButtonPlan(),
                 onPressed: () {
                   print('Запланировать. Детализация места.');
                 }),
           ),
           Expanded(
-            child: FlatButton(
+            child: TextButton(
                 onPressed: () {
                   print('В избраное. Детализация места.');
                 },

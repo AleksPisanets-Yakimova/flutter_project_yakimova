@@ -36,4 +36,9 @@ class StandartSizedBox {
   static const standartSizedBox = SizedBox(width: 9);
   static const standartSizedBoxBig = SizedBox(width: 10);
   static const standartSizedBoxBigger = SizedBox(width: 83);
+
+  static const filterSizedBoxHeight = SizedBox(height: 15);
+  static const filterSizedBoxHeightMax = SizedBox(height: 40);
+
+  static const filterSizedBoxWidth = SizedBox(width: 45);
 }

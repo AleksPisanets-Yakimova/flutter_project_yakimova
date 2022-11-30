@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-
 import 'package:places_yakimova_project/ui/screen/const/assets.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class MyBottomNavigationBar extends StatelessWidget {
   const MyBottomNavigationBar({
@@ -21,7 +20,7 @@ class MyBottomNavigationBar extends StatelessWidget {
       items: [
         BottomNavigationBarItem(
           icon: currentIndex == 0
-              ? FlatButton(
+              ? TextButton(
                   onPressed: () {
                     print('Список интересных мест. BottomNavigationBar.');
                   },
@@ -30,7 +29,7 @@ class MyBottomNavigationBar extends StatelessWidget {
                     color: Theme.of(context).navigationBarTheme.indicatorColor,
                   ),
                 )
-              : FlatButton(
+              : TextButton(
                   onPressed: () {
                     print('Список интересных мест. BottomNavigationBar.');
                   },
@@ -43,7 +42,7 @@ class MyBottomNavigationBar extends StatelessWidget {
         ),
         BottomNavigationBarItem(
           icon: currentIndex == 1
-              ? FlatButton(
+              ? TextButton(
                   onPressed: () {
                     print('Избранное. BottomNavigationBar.');
                   },
@@ -52,7 +51,7 @@ class MyBottomNavigationBar extends StatelessWidget {
                     color: Theme.of(context).navigationBarTheme.backgroundColor,
                   ),
                 )
-              : FlatButton(
+              : TextButton(
                   onPressed: () {
                     print('Избранное. BottomNavigationBar.');
                   },
