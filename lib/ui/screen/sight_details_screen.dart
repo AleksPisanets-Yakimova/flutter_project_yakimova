@@ -80,8 +80,8 @@ class _Image extends StatelessWidget {
               width: AppSizes.standartSizeIndent,
               height: AppSizes.standartSizeIndent,
               decoration: BoxDecoration(
-                borderRadius:
-                    BorderRadius.all(Radius.circular(AppSizes.standartRadius)),
+                borderRadius: const BorderRadius.all(
+                    Radius.circular(AppSizes.standartRadius)),
                 color: Theme.of(context).colorScheme.background,
               ),
               child: Center(
@@ -136,7 +136,7 @@ class _ButtonRoute extends StatelessWidget {
                   child: Container(
                     height: AppSizes.standartHeightBigger,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(12)),
+                      borderRadius: const BorderRadius.all(Radius.circular(12)),
                       color: Theme.of(context).buttonColor,
                     ),
                     child: Row(
@@ -166,8 +166,8 @@ class _DividingLine extends StatelessWidget {
   Widget build(BuildContext context) => Container(
         height: AppSizes.standartHeight,
         decoration: BoxDecoration(
-          borderRadius:
-              BorderRadius.all(Radius.circular(AppSizes.standartRadiusBig)),
+          borderRadius: const BorderRadius.all(
+              Radius.circular(AppSizes.standartRadiusBig)),
           color: Theme.of(context).dividerColor,
         ),
       );

@@ -42,3 +42,10 @@ class StandartSizedBox {
 
   static const filterSizedBoxWidth = SizedBox(width: 45);
 }
+
+class DistanceSettings {
+  static const double from = 100;
+  static const double to = 10000;
+  static const double latitude = 48.478560;
+  static const double longitude = 135.117792;
+}

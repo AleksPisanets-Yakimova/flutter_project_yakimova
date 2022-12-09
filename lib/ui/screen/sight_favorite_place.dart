@@ -19,20 +19,18 @@ class SightCardFavoritePlace extends StatelessWidget {
   final bool interestingPlaces;
 
   @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(
-        left: AppSizes.standartSpacingZero,
-        right: AppSizes.standartSpacingZero,
-        top: AppSizes.standartSpacingTextGalery,
-      ),
-      child: _ContentCard(
-        sight: sight,
-        visited: visited,
-        interestingPlaces: interestingPlaces,
-      ),
-    );
-  }
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.only(
+          left: AppSizes.standartSpacingZero,
+          right: AppSizes.standartSpacingZero,
+          top: AppSizes.standartSpacingTextGalery,
+        ),
+        child: _ContentCard(
+          sight: sight,
+          visited: visited,
+          interestingPlaces: interestingPlaces,
+        ),
+      );
 }
 
 class _ContentCard extends StatelessWidget {
@@ -48,34 +46,32 @@ class _ContentCard extends StatelessWidget {
   final bool interestingPlaces;
 
   @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: const BorderRadius.all(
-          Radius.circular(AppSizes.standartSpacing),
+  Widget build(BuildContext context) => Container(
+        decoration: BoxDecoration(
+          borderRadius: const BorderRadius.all(
+            Radius.circular(AppSizes.standartSpacing),
+          ),
+          color: Theme.of(context).cardColor,
         ),
-        color: Theme.of(context).cardColor,
-      ),
-      clipBehavior: Clip.antiAlias,
-      child: AspectRatio(
-        aspectRatio: 6 / 3,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            _ImageAndItsParameters(
-              sight: sight,
-              visited: visited,
-              interestingPlaces: interestingPlaces,
-            ),
-            _CardOptions(
-              sightName: sight.name,
-              visited: visited,
-            )
-          ],
+        clipBehavior: Clip.antiAlias,
+        child: AspectRatio(
+          aspectRatio: 6 / 3,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              _ImageAndItsParameters(
+                sight: sight,
+                visited: visited,
+                interestingPlaces: interestingPlaces,
+              ),
+              _CardOptions(
+                sightName: sight.name,
+                visited: visited,
+              )
+            ],
+          ),
         ),
-      ),
-    );
-  }
+      );
 }
 
 class _ImageAndItsParameters extends StatelessWidget {

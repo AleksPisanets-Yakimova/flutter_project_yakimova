@@ -1,6 +1,7 @@
 enum SightType { cafe, hotel, museum, park, restaurant, other }
 
 class Sight {
+  final int id;
   final String name; // -  название достопримечательности
   final double lat; //- координаты места
   final double lon;
@@ -9,6 +10,7 @@ class Sight {
   final SightType type;
 
   Sight({
+    required this.id,
     required this.name,
     required this.lat,
     required this.lon,

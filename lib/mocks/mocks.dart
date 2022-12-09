@@ -2,6 +2,7 @@ import 'package:places_yakimova_project/domain/sight.dart';
 
 final List<Sight> mocks = [
   Sight(
+    id: 1,
     name: 'Хабаровский утёс',
     lat: 48.472668,
     lon: 135.049441,
@@ -20,6 +21,7 @@ final List<Sight> mocks = [
     type: SightType.other,
   ),
   Sight(
+    id: 2,
     name: 'Хабаровский краевой музей им. Н.И. Гродекова',
     lat: 48.473289,
     lon: 135.051058,
@@ -32,6 +34,7 @@ final List<Sight> mocks = [
     type: SightType.museum,
   ),
   Sight(
+    id: 3,
     name: 'Кофе Репаблик',
     lat: 48.478742,
     lon: 135.07008,
@@ -42,6 +45,7 @@ final List<Sight> mocks = [
     type: SightType.cafe,
   ),
   Sight(
+    id: 4,
     name: 'Ресторан "Олимпик"',
     lat: 48.485353,
     lon: 135.085535,
@@ -54,6 +58,7 @@ final List<Sight> mocks = [
     type: SightType.restaurant,
   ),
   Sight(
+    id: 5,
     name: 'Lotus Hotel',
     lat: 48.471586,
     lon: 135.060912,
@@ -67,6 +72,7 @@ final List<Sight> mocks = [
     type: SightType.hotel,
   ),
   Sight(
+    id: 6,
     name: 'Парк Муравьева-Амурского',
     lat: 48.473143,
     lon: 135.049149,
