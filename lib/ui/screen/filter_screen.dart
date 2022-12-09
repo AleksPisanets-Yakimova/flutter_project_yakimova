@@ -36,6 +36,19 @@ class _FilterScreenState extends State {
       );
 }
 
+class SelectedCategoriesState extends InheritedWidget {
+  final Set<SightType> selectedCategories;
+  const SelectedCategoriesState({
+    Key? key,
+    required this.selectedCategories,
+    required Widget child,
+  }) : super(key: key, child: child);
+
+  @override
+  bool updateShouldNotify(covariant SelectedCategoriesState oldWidget) =>
+      selectedCategories != selectedCategories;
+}
+
 class _Content extends StatefulWidget {
   @override
   State<_Content> createState() => _ContentState();
@@ -73,51 +86,57 @@ class _FilterTextButton extends StatefulWidget {
 
 class _FilterTextButtonState extends State<_FilterTextButton> {
   @override
-  Widget build(BuildContext context) => Expanded(
-        child: AnimatedContainer(
-          duration: const Duration(seconds: 2),
-          child: Material(
-            child: Column(
-              children: [
-                InkWell(
-                  onTap: () {
-                    setState(() {
-                      if (_selectedCategories
-                          .contains(widget.filterCategory.type)) {
-                        _selectedCategories.remove(widget.filterCategory.type);
-                      } else {
-                        _selectedCategories.add(widget.filterCategory.type);
-                      }
-                    });
-                  },
-                  child: Stack(
-                    children: <Widget>[
-                      SvgPicture.asset(widget.filterCategory.imageCategory,
-                          color: Theme.of(context).buttonColor),
-                      if (_selectedCategories
-                          .contains(widget.filterCategory.type))
-                        Positioned(
-                          right: 0,
-                          bottom: 0,
-                          child: SvgPicture.asset(
-                            AppAssets.tickChoice,
-                          ),
+  Widget build(BuildContext context) {
+    final selectedCategories = context
+            .dependOnInheritedWidgetOfExactType<SelectedCategoriesState>()
+            ?.selectedCategories ??
+        0;
+
+    return Expanded(
+      child: AnimatedContainer(
+        duration: const Duration(seconds: 2),
+        child: Material(
+          child: Column(
+            children: [
+              InkWell(
+                onTap: () {
+                  setState(() {
+                    if (_selectedCategories
+                        .contains(widget.filterCategory.type)) {
+                      _selectedCategories.remove(widget.filterCategory.type);
+                    } else {
+                      _selectedCategories.add(widget.filterCategory.type);
+                    }
+                  });
+                },
+                child: Stack(
+                  children: <Widget>[
+                    SvgPicture.asset(widget.filterCategory.imageCategory,
+                        color: Theme.of(context).buttonColor),
+                    if (_selectedCategories
+                        .contains(widget.filterCategory.type))
+                      Positioned(
+                        right: 0,
+                        bottom: 0,
+                        child: SvgPicture.asset(
+                          AppAssets.tickChoice,
                         ),
-                    ],
-                  ),
+                      ),
+                  ],
                 ),
-                StandartSizedBox.filterSizedBoxHeight,
-                Text(
-                  widget.filterCategory.name,
-                  textAlign: TextAlign.center,
-                  style:
-                      AppTypography.textFilter.withColor(AppColors.colorBlack),
-                ),
-              ],
-            ),
+              ),
+              StandartSizedBox.filterSizedBoxHeight,
+              Text(
+                widget.filterCategory.name,
+                textAlign: TextAlign.center,
+                style: AppTypography.textFilter.withColor(AppColors.colorBlack),
+              ),
+            ],
           ),
         ),
-      );
+      ),
+    );
+  }
 }
 
 class _FilterRow extends StatelessWidget {
@@ -157,34 +176,37 @@ class _BackAndClear extends StatefulWidget {
 
 class _BackAndClearState extends State<_BackAndClear> {
   @override
-  Widget build(BuildContext context) => Center(
-        child: Row(
-          children: [
-            TextButton(
-              child: SvgPicture.asset(
-                AppAssets.backArrowSvg,
-                color: Theme.of(context).colorScheme.secondary,
+  Widget build(BuildContext context) => SelectedCategoriesState(
+        selectedCategories: _selectedCategories,
+        child: Center(
+          child: Row(
+            children: [
+              TextButton(
+                child: SvgPicture.asset(
+                  AppAssets.backArrowSvg,
+                  color: Theme.of(context).colorScheme.secondary,
+                ),
+                onPressed: () {
+                  print('Назад. Фильтр.');
+                },
               ),
-              onPressed: () {
-                print('Назад. Фильтр.');
-              },
-            ),
-            const Spacer(),
-            TextButton(
-              child: Text(
-                AppTexts.textClear,
-                style: AppTypography.textSightListName
-                    .withColor(AppColors.colorMediumSeaGreen),
+              const Spacer(),
+              TextButton(
+                child: Text(
+                  AppTexts.textClear,
+                  style: AppTypography.textSightListName
+                      .withColor(AppColors.colorMediumSeaGreen),
+                ),
+                onPressed: () {
+                  print('Очистить. Фильтр.');
+                  setState(() {
+                    _selectedCategories = {};
+                  });
+                  print(_selectedCategories);
+                },
               ),
-              onPressed: () {
-                print('Очистить. Фильтр.');
-                setState(() {
-                  _selectedCategories = {};
-                });
-                print(_selectedCategories);
-              },
-            ),
-          ],
+            ],
+          ),
         ),
       );
 }
@@ -225,7 +247,7 @@ class _DistanceState extends State<_Distance> {
                 const Spacer(),
                 Padding(
                   padding: const EdgeInsets.only(right: 15),
-                  child: Text('от ${_startDistance} до ${_endDistance} м'),
+                  child: Text('от $_startDistance до $_endDistance м'),
                 ),
               ],
             ),
