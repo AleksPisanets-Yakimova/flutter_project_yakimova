@@ -5,6 +5,7 @@ import 'package:places_yakimova_project/domain/sight.dart';
 class AppTexts {
   static const String textBuildRroute = 'ПОСТРОИТЬ МАРШРУТ';
   static const String textFavorites = 'Избранное';
+  static const String textSettings = 'Настройки';
   static const String textTitle = 'Cписок интересных мест';
   static const String textTimeWork = 'закрыто до 09:00';
   static const String textTimePlan = 'Запланировано на 12 окт. 2021';
@@ -19,6 +20,9 @@ class AppTexts {
 
   static const String textClear = 'Очистить';
   static const String textShow = 'Показать';
+
+  static const String textSettingsTheme = 'Темная тема';
+  static const String textSettingsInfo = 'Смотреть туториал';
 }
 
 const mapSightTypeToString = {

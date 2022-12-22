@@ -17,6 +17,7 @@ class AppAssets {
   static const String particularPlaceSvg = 'res/image/particular_place.svg';
   static const String restourantSvg = 'res/image/restourant.svg';
   static const String hotelSvg = 'res/image/hotel.svg';
-  static const String tickChoice = 'res/image/tickChoice.svg';
-  static const String notSelected = 'res/image/notSelected.svg';
+  static const String tickChoice = 'res/image/tick_choice.svg';
+  static const String settingsFill = 'res/image/settings_fill.svg';
+  static const String infoSvg = 'res/image/info.svg';
 }

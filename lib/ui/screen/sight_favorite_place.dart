@@ -25,10 +25,13 @@ class SightCardFavoritePlace extends StatelessWidget {
           right: AppSizes.standartSpacingZero,
           top: AppSizes.standartSpacingTextGalery,
         ),
-        child: _ContentCard(
-          sight: sight,
-          visited: visited,
-          interestingPlaces: interestingPlaces,
+        child: InkWell(
+          onTap: () => print('зрасьте приехали'),
+          child: _ContentCard(
+            sight: sight,
+            visited: visited,
+            interestingPlaces: interestingPlaces,
+          ),
         ),
       );
 }
@@ -102,17 +105,13 @@ class _ImageAndItsParameters extends StatelessWidget {
               onPressed: () {
                 print('Тип карточки.');
               },
-              child: Positioned(
-                left: AppSizes.standartSpacing,
-                top: AppSizes.standartSpacing,
-                child: Text(
-                  mapSightTypeToString[sight.type]!,
-                  style: Theme.of(context).textTheme.button,
-                ),
+              child: Text(
+                mapSightTypeToString[sight.type]!,
+                style: Theme.of(context).textTheme.button,
               ),
             ),
             Positioned(
-              right: AppSizes.standartSpacing,
+              right: AppSizes.standartSpacingZero,
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [

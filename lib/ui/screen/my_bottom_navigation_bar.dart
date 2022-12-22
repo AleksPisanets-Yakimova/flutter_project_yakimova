@@ -65,6 +65,30 @@ class MyBottomNavigationBar extends StatelessWidget {
                   ),
             label: '',
           ),
+          BottomNavigationBarItem(
+            icon: currentIndex == 2
+                ? TextButton(
+                    onPressed: () {
+                      print('Настройки. BottomNavigationBar.');
+                    },
+                    child: SvgPicture.asset(
+                      AppAssets.settingsFill,
+                      color:
+                          Theme.of(context).navigationBarTheme.indicatorColor,
+                    ),
+                  )
+                : TextButton(
+                    onPressed: () {
+                      print('Настройки. BottomNavigationBar.');
+                    },
+                    child: SvgPicture.asset(
+                      AppAssets.settingsFill,
+                      color:
+                          Theme.of(context).navigationBarTheme.backgroundColor,
+                    ),
+                  ),
+            label: '',
+          ),
         ],
       );
 }
