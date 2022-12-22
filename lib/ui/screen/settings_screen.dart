@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:places_yakimova_project/main.dart';
+import 'package:places_yakimova_project/ui/screen/const/assets.dart';
 import 'package:places_yakimova_project/ui/screen/const/value_text.dart';
 import 'package:places_yakimova_project/ui/screen/const/values.dart';
 import 'package:places_yakimova_project/ui/screen/my_bottom_navigation_bar.dart';
-import 'package:places_yakimova_project/ui/screen/rez/themes.dart';
-
-import 'const/assets.dart';
 
 class SettingsScreen extends StatefulWidget {
   @override
@@ -78,15 +76,16 @@ class _SwitchThemeState extends State<_SwitchTheme> {
 
   @override
   Widget build(BuildContext context) => Switch(
-        // This bool value toggles the switch.
         value: dark,
         activeColor: Colors.black,
         onChanged: (value) {
           print('Сменили тему');
           MyApp.of(context).toogleTheme();
-          setState(() {
-            dark = value;
-          });
+          setState(
+            () {
+              dark = value;
+            },
+          );
         },
       );
 }

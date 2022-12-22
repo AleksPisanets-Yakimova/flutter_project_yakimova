@@ -133,30 +133,30 @@ class _ButtonRoute extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(AppSizes.standartSpacing),
               child: TextButton(
-                  child: Container(
-                    height: AppSizes.standartHeightBigger,
-                    decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.all(Radius.circular(12)),
-                      color: Theme.of(context).buttonColor,
-                    ),
-                    child: Row(
-                      children: [
-                        StandartSizedBox.standartSizedBoxBigger,
-                        SvgPicture.asset(AppAssets.routeSvg),
-                        StandartSizedBox.standartSizedBoxBig,
-                        Text(
-                          AppTexts.textBuildRroute,
-                          style: Theme.of(context).textTheme.button,
-                        ),
-                      ],
-                    ),
+                child: Container(
+                  height: AppSizes.standartHeightBigger,
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(Radius.circular(12)),
+                    color: Theme.of(context).buttonColor,
                   ),
-                  onPressed: () {
-                    print('Построить маршрут. Детализация места.');
-                  }),
+                  child: Row(
+                    children: [
+                      StandartSizedBox.standartSizedBoxBigger,
+                      SvgPicture.asset(AppAssets.routeSvg),
+                      StandartSizedBox.standartSizedBoxBig,
+                      Text(
+                        AppTexts.textBuildRroute,
+                        style: Theme.of(context).textTheme.button,
+                      ),
+                    ],
+                  ),
+                ),
+                onPressed: () {
+                  print('Построить маршрут. Детализация места.');
+                },
+              ),
             ),
           ),
-          // ),
         ],
       );
 }
@@ -167,7 +167,8 @@ class _DividingLine extends StatelessWidget {
         height: AppSizes.standartHeight,
         decoration: BoxDecoration(
           borderRadius: const BorderRadius.all(
-              Radius.circular(AppSizes.standartRadiusBig)),
+            Radius.circular(AppSizes.standartRadiusBig),
+          ),
           color: Theme.of(context).dividerColor,
         ),
       );
@@ -179,10 +180,11 @@ class _FooterButtons extends StatelessWidget {
         children: [
           Expanded(
             child: TextButton(
-                child: _ButtonPlan(),
-                onPressed: () {
-                  print('Запланировать. Детализация места.');
-                }),
+              child: _ButtonPlan(),
+              onPressed: () {
+                print('Запланировать. Детализация места.');
+              },
+            ),
           ),
           Expanded(
             child: TextButton(

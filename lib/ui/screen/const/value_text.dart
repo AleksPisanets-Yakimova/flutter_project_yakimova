@@ -1,6 +1,6 @@
 import 'package:places_yakimova_project/domain/sight.dart';
 
-// Текстовые переменные:
+// Текстовые переменные.
 
 class AppTexts {
   static const String textBuildRroute = 'ПОСТРОИТЬ МАРШРУТ';

@@ -59,7 +59,7 @@ class MyAppState extends State<MyApp> {
         //   sight: mocks.first,
         // ), // Детлизация места
         // home: VisitingScreen(), // посетить / хочу посетить ++++
-        // home: FilterScreen(),
-        home: SettingsScreen(), // настройки
+        home: FilterScreen(), // Фильтер
+        // home: SettingsScreen(), // настройки
       );
 }

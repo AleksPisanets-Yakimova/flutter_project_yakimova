@@ -26,7 +26,7 @@ class SightCardFavoritePlace extends StatelessWidget {
           top: AppSizes.standartSpacingTextGalery,
         ),
         child: InkWell(
-          onTap: () => print('зрасьте приехали'),
+          onTap: () => print('Карточка места'),
           child: _ContentCard(
             sight: sight,
             visited: visited,

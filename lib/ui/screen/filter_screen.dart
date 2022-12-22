@@ -63,9 +63,7 @@ class _ContentState extends State<_Content> {
           const _FilterRow(firstline: true),
           StandartSizedBox.filterSizedBoxHeightMax,
           const _FilterRow(firstline: false),
-          const SizedBox(
-            height: 60,
-          ),
+          const SizedBox(height: 60),
           _Distance(),
           _ShowButton(),
         ],
@@ -149,24 +147,25 @@ class _FilterRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Expanded(
-          child: Row(
-        children: [
-          _FilterTextButton(
-            filterCategory:
-                firstline ? filterCategories[0] : filterCategories[1],
-          ),
-          StandartSizedBox.filterSizedBoxWidth,
-          _FilterTextButton(
-            filterCategory:
-                firstline ? filterCategories[2] : filterCategories[3],
-          ),
-          StandartSizedBox.filterSizedBoxWidth,
-          _FilterTextButton(
-            filterCategory:
-                firstline ? filterCategories[4] : filterCategories[5],
-          ),
-        ],
-      ));
+        child: Row(
+          children: [
+            _FilterTextButton(
+              filterCategory:
+                  firstline ? filterCategories[0] : filterCategories[1],
+            ),
+            StandartSizedBox.filterSizedBoxWidth,
+            _FilterTextButton(
+              filterCategory:
+                  firstline ? filterCategories[2] : filterCategories[3],
+            ),
+            StandartSizedBox.filterSizedBoxWidth,
+            _FilterTextButton(
+              filterCategory:
+                  firstline ? filterCategories[4] : filterCategories[5],
+            ),
+          ],
+        ),
+      );
 }
 
 class _BackAndClear extends StatefulWidget {
@@ -214,7 +213,10 @@ class _BackAndClearState extends State<_BackAndClear> {
 class _Categories extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.only(top: 16, bottom: 24),
+        padding: const EdgeInsets.only(
+          top: 16,
+          bottom: 24,
+        ),
         child: Text(
           AppTexts.textCategories,
           style:
@@ -312,11 +314,11 @@ class _ShowButton extends StatelessWidget {
 }
 
 /// locationSettings:
-/// 1/ latitudePlaces / широта места
-/// 2/ longitudePlaces / долгота места
-/// 3/ latitudeMyLocation / широта моего местоположения
-/// 4/ longitudeMyLocation / долгота моего местоположения
-/// 5/ distance / расстояние
+/// 1/ latitudePlaces / Широта места.
+/// 2/ longitudePlaces / Долгота места.
+/// 3/ latitudeMyLocation / Широта моего местоположения.
+/// 4/ longitudeMyLocation / Долгота моего местоположения.
+/// 5/ distance / Расстояние.
 
 bool _placesAround(
   double latitudePlaces,

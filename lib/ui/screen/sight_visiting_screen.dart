@@ -17,8 +17,9 @@ class _VisitingScreenState extends State with SingleTickerProviderStateMixin {
   void initState() {
     super.initState();
     tabController = TabController(length: 2, vsync: this);
-    //обновляем страницу, для перерисовки текущего виждета на экране
-    //т.е. когда тапаем по иконке и она меняет страницу - иконка должна менять цвет на активную
+
+    // Обновляем страницу, для перерисовки текущего виждета на экране
+    // т.е. когда тапаем по иконке и она меняет страницу - иконка должна менять цвет на активную.
     tabController.addListener(() {
       setState(() {});
     });
