@@ -59,10 +59,4 @@ class AppTypography {
     fontWeight: _regular,
     fontSize: 12,
   );
-
-  static const textFilterDistance = TextStyle(
-    fontFamily: _defaultFontFamily,
-    fontWeight: _regular,
-    fontSize: 16,
-  );
 }

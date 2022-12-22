@@ -65,8 +65,7 @@ class AppTheme {
             AppTypography.textSightListCategory.withColor(AppColors.colorWhite),
         subtitle1: AppTypography.textSightListTimeWork
             .withColor(AppColors.colorSlateBlue),
-        subtitle2:
-            AppTypography.textSightListCategory.withColor(AppColors.colorBlack),
+        subtitle2: AppTypography.textFilter.withColor(AppColors.colorBlack),
       );
 
   /// Темная тема.
@@ -125,5 +124,6 @@ class AppTheme {
             AppTypography.textSightListCategory.withColor(AppColors.colorWhite),
         subtitle1:
             AppTypography.textSightListTimeWork.withColor(AppColors.colorWhite),
+        subtitle2: AppTypography.textFilter.withColor(AppColors.colorWhite),
       );
 }

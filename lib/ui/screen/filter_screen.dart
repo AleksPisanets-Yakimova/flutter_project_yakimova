@@ -17,36 +17,100 @@ late double _startDistance = DistanceSettings.from;
 late double _endDistance = DistanceSettings.to;
 late double _distance = (_endDistance - _startDistance) / 1000;
 late Set<int> _selectedPlaces = {};
+late var _selectCount = _selectedPlaces.length;
 
 class FilterScreen extends StatefulWidget {
+  static _FilterScreenState of(
+    BuildContext context, {
+    bool listen = false,
+  }) =>
+      _FilterScreenInheritedWidget.of(context, listen: listen)!;
+
   @override
   _FilterScreenState createState() => _FilterScreenState();
 }
 
-class _FilterScreenState extends State {
+class _FilterScreenState extends State<FilterScreen> {
+  var _needUpdate = false;
+
+  // Обновление дерева зависимостей.
+  void update() {
+    setState(() {
+      _needUpdate = true;
+    });
+  }
+
+  void clearSearch() {
+    _selectedCategories.clear();
+    _selectedPlaces.clear();
+    print('В функции clearSearch: $_selectedCategories');
+    update();
+  }
+
+  void updateSearch(SightType type) {
+    if (_selectedCategories.contains(type)) {
+      _selectedCategories.remove(type);
+    } else {
+      _selectedCategories.add(type);
+    }
+    _selectCount = _selectedCategories.length;
+    update();
+  }
+
+  void updateSelect(int id) {
+    _selectedPlaces.add(id);
+    update();
+  }
+
   @override
-  Widget build(BuildContext context) => Scaffold(
-        appBar: AppBar(
-          title: _BackAndClear(),
-        ),
-        body: Padding(
-          padding: const EdgeInsets.only(top: 25, left: 30, right: 30),
-          child: _Content(),
+  Widget build(BuildContext context) => _FilterScreenInheritedWidget(
+        state: this,
+        child: Scaffold(
+          appBar: AppBar(
+            title: _BackAndClear(),
+          ),
+          body: Padding(
+            padding: const EdgeInsets.only(top: 25, left: 30, right: 30),
+            child: _Content(),
+          ),
         ),
       );
 }
 
-class SelectedCategoriesState extends InheritedWidget {
-  final Set<SightType> selectedCategories;
-  const SelectedCategoriesState({
+class _FilterScreenInheritedWidget extends InheritedWidget {
+  const _FilterScreenInheritedWidget({
     Key? key,
-    required this.selectedCategories,
+    required this.state,
     required Widget child,
   }) : super(key: key, child: child);
 
+  final _FilterScreenState state;
+
+  /// Ищет InheritedWidget в дереве, возвращает [state].
+  ///
+  /// Если надо, подписывается ([listen]).
+  static _FilterScreenState? of(
+    BuildContext context, {
+    required bool listen,
+  }) =>
+      (listen
+              ? context.dependOnInheritedWidgetOfExactType<
+                  _FilterScreenInheritedWidget>()
+              : context
+                  .getElementForInheritedWidgetOfExactType<
+                      _FilterScreenInheritedWidget>()
+                  ?.widget as _FilterScreenInheritedWidget?)
+          ?.state;
+
   @override
-  bool updateShouldNotify(covariant SelectedCategoriesState oldWidget) =>
-      selectedCategories != selectedCategories;
+  bool updateShouldNotify(_FilterScreenInheritedWidget oldWidget) {
+    if (state._needUpdate) {
+      state._needUpdate = false;
+      return true;
+    }
+
+    return false;
+  }
 }
 
 class _Content extends StatefulWidget {
@@ -56,18 +120,21 @@ class _Content extends StatefulWidget {
 
 class _ContentState extends State<_Content> {
   @override
-  Widget build(BuildContext context) => Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          _Categories(),
-          const _FilterRow(firstline: true),
-          StandartSizedBox.filterSizedBoxHeightMax,
-          const _FilterRow(firstline: false),
-          const SizedBox(height: 60),
-          _Distance(),
-          _ShowButton(),
-        ],
-      );
+  Widget build(BuildContext context) {
+    FilterScreen.of(context, listen: true);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        _Categories(),
+        const _FilterRow(firstline: true),
+        StandartSizedBox.filterSizedBoxHeightMax,
+        const _FilterRow(firstline: false),
+        const SizedBox(height: 60),
+        _Distance(),
+        _ShowButton(),
+      ],
+    );
+  }
 }
 
 class _FilterTextButton extends StatefulWidget {
@@ -84,57 +151,48 @@ class _FilterTextButton extends StatefulWidget {
 
 class _FilterTextButtonState extends State<_FilterTextButton> {
   @override
-  Widget build(BuildContext context) {
-    final selectedCategories = context
-            .dependOnInheritedWidgetOfExactType<SelectedCategoriesState>()
-            ?.selectedCategories ??
-        0;
-
-    return Expanded(
-      child: AnimatedContainer(
-        duration: const Duration(seconds: 2),
-        child: Material(
-          child: Column(
-            children: [
-              InkWell(
-                onTap: () {
-                  setState(() {
-                    if (_selectedCategories
-                        .contains(widget.filterCategory.type)) {
-                      _selectedCategories.remove(widget.filterCategory.type);
-                    } else {
-                      _selectedCategories.add(widget.filterCategory.type);
-                    }
-                  });
-                },
-                child: Stack(
-                  children: <Widget>[
-                    SvgPicture.asset(widget.filterCategory.imageCategory,
-                        color: Theme.of(context).buttonColor),
-                    if (_selectedCategories
-                        .contains(widget.filterCategory.type))
-                      Positioned(
-                        right: 0,
-                        bottom: 0,
-                        child: SvgPicture.asset(
-                          AppAssets.tickChoice,
+  Widget build(BuildContext context) => Expanded(
+        child: AnimatedContainer(
+          duration: const Duration(seconds: 2),
+          child: Material(
+            child: Column(
+              children: [
+                InkWell(
+                  onTap: () {
+                    setState(() {
+                      FilterScreen.of(context, listen: false)
+                          .updateSearch(widget.filterCategory.type);
+                    });
+                  },
+                  child: Stack(
+                    children: <Widget>[
+                      SvgPicture.asset(widget.filterCategory.imageCategory,
+                          color: Theme.of(context).buttonColor),
+                      if (_selectedCategories
+                          .contains(widget.filterCategory.type))
+                        Positioned(
+                          right: 0,
+                          bottom: 0,
+                          child: SvgPicture.asset(
+                            AppAssets.tickChoice,
+                          ),
                         ),
-                      ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              StandartSizedBox.filterSizedBoxHeight,
-              Text(
-                widget.filterCategory.name,
-                textAlign: TextAlign.center,
-                style: AppTypography.textFilter.withColor(AppColors.colorBlack),
-              ),
-            ],
+                StandartSizedBox.filterSizedBoxHeight,
+                Text(
+                  widget.filterCategory.name,
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.subtitle2,
+                  overflow: TextOverflow.ellipsis,
+                  softWrap: false,
+                ),
+              ],
+            ),
           ),
         ),
-      ),
-    );
-  }
+      );
 }
 
 class _FilterRow extends StatelessWidget {
@@ -175,37 +233,34 @@ class _BackAndClear extends StatefulWidget {
 
 class _BackAndClearState extends State<_BackAndClear> {
   @override
-  Widget build(BuildContext context) => SelectedCategoriesState(
-        selectedCategories: _selectedCategories,
-        child: Center(
-          child: Row(
-            children: [
-              TextButton(
-                child: SvgPicture.asset(
-                  AppAssets.backArrowSvg,
-                  color: Theme.of(context).colorScheme.secondary,
-                ),
-                onPressed: () {
-                  print('Назад. Фильтр.');
-                },
+  Widget build(BuildContext context) => Center(
+        child: Row(
+          children: [
+            TextButton(
+              child: SvgPicture.asset(
+                AppAssets.backArrowSvg,
+                color: Theme.of(context).colorScheme.secondary,
               ),
-              const Spacer(),
-              TextButton(
-                child: Text(
-                  AppTexts.textClear,
-                  style: AppTypography.textSightListName
-                      .withColor(AppColors.colorMediumSeaGreen),
-                ),
-                onPressed: () {
-                  print('Очистить. Фильтр.');
-                  setState(() {
-                    _selectedCategories = {};
-                  });
-                  print(_selectedCategories);
-                },
+              onPressed: () {
+                print('Назад. Фильтр.');
+              },
+            ),
+            const Spacer(),
+            TextButton(
+              child: Text(
+                AppTexts.textClear,
+                style: AppTypography.textSightListName
+                    .withColor(AppColors.colorMediumSeaGreen),
               ),
-            ],
-          ),
+              onPressed: () {
+                print('Очистить. Фильтр.');
+                setState(() {
+                  FilterScreen.of(context, listen: false).clearSearch();
+                });
+                print('В виджете _BackAndClearState: $_selectedCategories');
+              },
+            ),
+          ],
         ),
       );
 }
@@ -219,8 +274,7 @@ class _Categories extends StatelessWidget {
         ),
         child: Text(
           AppTexts.textCategories,
-          style:
-              AppTypography.textFilter.withColor(AppColors.colorDarkSlateGray),
+          style: Theme.of(context).textTheme.subtitle2,
         ),
       );
 }
@@ -243,8 +297,7 @@ class _DistanceState extends State<_Distance> {
               children: [
                 Text(
                   AppTexts.textDistance,
-                  style: AppTypography.textFilterDistance
-                      .withColor(AppColors.colorBlack),
+                  style: Theme.of(context).textTheme.subtitle2,
                 ),
                 const Spacer(),
                 Padding(
@@ -275,7 +328,12 @@ class _DistanceState extends State<_Distance> {
       );
 }
 
-class _ShowButton extends StatelessWidget {
+class _ShowButton extends StatefulWidget {
+  @override
+  State<_ShowButton> createState() => _ShowButtonState();
+}
+
+class _ShowButtonState extends State<_ShowButton> {
   @override
   Widget build(BuildContext context) => Expanded(
         child: TextButton(
@@ -288,7 +346,9 @@ class _ShowButton extends StatelessWidget {
               ),
               child: Center(
                 child: Text(
-                  AppTexts.textShow,
+                  _selectCount > 0
+                      ? '${AppTexts.textShow} ($_selectCount)'
+                      : AppTexts.textShow,
                   style: Theme.of(context).textTheme.button,
                   textAlign: TextAlign.center,
                 ),
@@ -305,7 +365,8 @@ class _ShowButton extends StatelessWidget {
                     _distance);
 
                 if (nearMe && _selectedCategories.contains(places.type)) {
-                  _selectedPlaces.add(places.id);
+                  // _selectedPlaces.add(places.id);
+                  FilterScreen.of(context).updateSelect(places.id);
                 }
               }
               print(_selectedPlaces);
