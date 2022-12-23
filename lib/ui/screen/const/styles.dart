@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 
-/// Расширение добавляет [withColor] к стилю.
-
 extension TextStyleExt on TextStyle {
   TextStyle withColor(Color color) => copyWith(color: color);
   TextStyle get withBold => copyWith(fontWeight: _bold);
@@ -14,8 +12,6 @@ const _regular = FontWeight.normal;
 const _bold = FontWeight.w700;
 
 class AppTypography {
-// Content styles.
-
   static const textPageTitle = TextStyle(
     fontFamily: _defaultFontFamily,
     fontWeight: _bold,
@@ -56,5 +52,11 @@ class AppTypography {
     fontFamily: _defaultFontFamily,
     fontWeight: _bold,
     fontSize: 24,
+  );
+
+  static const textFilter = TextStyle(
+    fontFamily: _defaultFontFamily,
+    fontWeight: _regular,
+    fontSize: 12,
   );
 }

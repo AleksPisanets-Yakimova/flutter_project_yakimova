@@ -31,7 +31,7 @@ class AppTheme {
       backgroundColor: AppColors.colorWhite,
       textTheme: _buildTextTheme(base.textTheme),
       colorScheme: base.colorScheme.copyWith(
-        background: AppColors.colorDackBlueMain,
+        background: AppColors.colorWhiteSmoke,
         secondary: AppColors.colorSlateBlue,
       ),
       cardColor: AppColors.colorWhiteSmoke,
@@ -44,32 +44,29 @@ class AppTheme {
     );
   }
 
-  static TextTheme _buildTextTheme(TextTheme base) {
-    return base.copyWith(
-      headline1:
-          AppTypography.textSightListCategory.withColor(AppColors.colorWhite),
-      headline2:
-          AppTypography.textSightListName.withColor(AppColors.colorBlack),
-      headline3: AppTypography.textSightListTimeWork
-          .withColor(AppColors.colorSlateBlue),
-      headline4: AppTypography.textSightListTimeWork
-          .withColor(AppColors.colorMediumSeaGreen),
-      headline5:
-          AppTypography.textPageTitle.withColor(AppColors.colorDarkSlateGray),
-      headline6: AppTypography.textSightCardCaption
-          .withColor(AppColors.colorDarkSlateGray),
-      bodyText1: AppTypography.textSightListCategory
-          .withColor(AppColors.colorDarkSlateGray),
-      bodyText2: AppTypography.textSightListTimeWork
-          .withColor(AppColors.colorDarkSlateGray),
-      button:
-          AppTypography.textSightListCategory.withColor(AppColors.colorWhite),
-      subtitle1: AppTypography.textSightListTimeWork
-          .withColor(AppColors.colorSlateBlue),
-      subtitle2:
-          AppTypography.textSightListCategory.withColor(AppColors.colorBlack),
-    );
-  }
+  static TextTheme _buildTextTheme(TextTheme base) => base.copyWith(
+        headline1:
+            AppTypography.textSightListCategory.withColor(AppColors.colorWhite),
+        headline2:
+            AppTypography.textSightListName.withColor(AppColors.colorBlack),
+        headline3: AppTypography.textSightListTimeWork
+            .withColor(AppColors.colorSlateBlue),
+        headline4: AppTypography.textSightListTimeWork
+            .withColor(AppColors.colorMediumSeaGreen),
+        headline5:
+            AppTypography.textPageTitle.withColor(AppColors.colorDarkSlateGray),
+        headline6: AppTypography.textSightCardCaption
+            .withColor(AppColors.colorDarkSlateGray),
+        bodyText1: AppTypography.textSightListCategory
+            .withColor(AppColors.colorDarkSlateGray),
+        bodyText2: AppTypography.textSightListTimeWork
+            .withColor(AppColors.colorDarkSlateGray),
+        button:
+            AppTypography.textSightListCategory.withColor(AppColors.colorWhite),
+        subtitle1: AppTypography.textSightListTimeWork
+            .withColor(AppColors.colorSlateBlue),
+        subtitle2: AppTypography.textFilter.withColor(AppColors.colorBlack),
+      );
 
   /// Темная тема.
   static ThemeData _buildThemeDark() {
@@ -107,27 +104,26 @@ class AppTheme {
     );
   }
 
-  static TextTheme _buildTextThemeDark(TextTheme base) {
-    return base.copyWith(
-      headline1: AppTypography.textSightListCategory
-          .withColor(AppColors.colorDarkSlateGray),
-      headline2:
-          AppTypography.textSightListName.withColor(AppColors.colorWhite),
-      headline3: AppTypography.textSightListTimeWork
-          .withColor(AppColors.colorSlateBlue),
-      headline4: AppTypography.textSightListTimeWork
-          .withColor(AppColors.colorMediumSeaGreen),
-      headline5: AppTypography.textPageTitle.withColor(AppColors.colorWhite),
-      headline6:
-          AppTypography.textSightCardCaption.withColor(AppColors.colorWhite),
-      bodyText1: AppTypography.textSightListCategory
-          .withColor(AppColors.colorSlateBlue),
-      bodyText2:
-          AppTypography.textSightListTimeWork.withColor(AppColors.colorWhite),
-      button:
-          AppTypography.textSightListCategory.withColor(AppColors.colorWhite),
-      subtitle1:
-          AppTypography.textSightListTimeWork.withColor(AppColors.colorWhite),
-    );
-  }
+  static TextTheme _buildTextThemeDark(TextTheme base) => base.copyWith(
+        headline1: AppTypography.textSightListCategory
+            .withColor(AppColors.colorDarkSlateGray),
+        headline2:
+            AppTypography.textSightListName.withColor(AppColors.colorWhite),
+        headline3: AppTypography.textSightListTimeWork
+            .withColor(AppColors.colorSlateBlue),
+        headline4: AppTypography.textSightListTimeWork
+            .withColor(AppColors.colorMediumSeaGreen),
+        headline5: AppTypography.textPageTitle.withColor(AppColors.colorWhite),
+        headline6:
+            AppTypography.textSightCardCaption.withColor(AppColors.colorWhite),
+        bodyText1: AppTypography.textSightListCategory
+            .withColor(AppColors.colorSlateBlue),
+        bodyText2:
+            AppTypography.textSightListTimeWork.withColor(AppColors.colorWhite),
+        button:
+            AppTypography.textSightListCategory.withColor(AppColors.colorWhite),
+        subtitle1:
+            AppTypography.textSightListTimeWork.withColor(AppColors.colorWhite),
+        subtitle2: AppTypography.textFilter.withColor(AppColors.colorWhite),
+      );
 }

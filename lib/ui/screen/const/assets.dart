@@ -10,4 +10,14 @@ class AppAssets {
   static const String outputSvg = 'res/image/output.svg';
   static const String routeSvg = 'res/image/route.svg';
   static const String shareSvg = 'res/image/share.svg';
+
+  static const String cafeSvg = 'res/image/cafe.svg';
+  static const String museumSvg = 'res/image/museum.svg';
+  static const String parkSvg = 'res/image/park.svg';
+  static const String particularPlaceSvg = 'res/image/particular_place.svg';
+  static const String restourantSvg = 'res/image/restourant.svg';
+  static const String hotelSvg = 'res/image/hotel.svg';
+  static const String tickChoice = 'res/image/tick_choice.svg';
+  static const String settingsFill = 'res/image/settings_fill.svg';
+  static const String infoSvg = 'res/image/info.svg';
 }
