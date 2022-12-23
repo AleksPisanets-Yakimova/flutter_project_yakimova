@@ -43,6 +43,7 @@ class _FilterScreenState extends State<FilterScreen> {
   void clearSearch() {
     _selectedCategories.clear();
     _selectedPlaces.clear();
+    _selectCount = 0;
     print('В функции clearSearch: $_selectedCategories');
     update();
   }
@@ -151,48 +152,51 @@ class _FilterTextButton extends StatefulWidget {
 
 class _FilterTextButtonState extends State<_FilterTextButton> {
   @override
-  Widget build(BuildContext context) => Expanded(
-        child: AnimatedContainer(
-          duration: const Duration(seconds: 2),
-          child: Material(
-            child: Column(
-              children: [
-                InkWell(
-                  onTap: () {
-                    setState(() {
-                      FilterScreen.of(context, listen: false)
-                          .updateSearch(widget.filterCategory.type);
-                    });
-                  },
-                  child: Stack(
-                    children: <Widget>[
-                      SvgPicture.asset(widget.filterCategory.imageCategory,
-                          color: Theme.of(context).buttonColor),
-                      if (_selectedCategories
-                          .contains(widget.filterCategory.type))
-                        Positioned(
-                          right: 0,
-                          bottom: 0,
-                          child: SvgPicture.asset(
-                            AppAssets.tickChoice,
-                          ),
+  Widget build(BuildContext context) {
+    FilterScreen.of(context, listen: true);
+    return Expanded(
+      child: AnimatedContainer(
+        duration: const Duration(seconds: 2),
+        child: Material(
+          child: Column(
+            children: [
+              InkWell(
+                onTap: () {
+                  setState(() {
+                    FilterScreen.of(context, listen: false)
+                        .updateSearch(widget.filterCategory.type);
+                  });
+                },
+                child: Stack(
+                  children: <Widget>[
+                    SvgPicture.asset(widget.filterCategory.imageCategory,
+                        color: Theme.of(context).buttonColor),
+                    if (_selectedCategories
+                        .contains(widget.filterCategory.type))
+                      Positioned(
+                        right: 0,
+                        bottom: 0,
+                        child: SvgPicture.asset(
+                          AppAssets.tickChoice,
                         ),
-                    ],
-                  ),
+                      ),
+                  ],
                 ),
-                StandartSizedBox.filterSizedBoxHeight,
-                Text(
-                  widget.filterCategory.name,
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.subtitle2,
-                  overflow: TextOverflow.ellipsis,
-                  softWrap: false,
-                ),
-              ],
-            ),
+              ),
+              StandartSizedBox.filterSizedBoxHeight,
+              Text(
+                widget.filterCategory.name,
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.subtitle2,
+                overflow: TextOverflow.ellipsis,
+                softWrap: false,
+              ),
+            ],
           ),
         ),
-      );
+      ),
+    );
+  }
 }
 
 class _FilterRow extends StatelessWidget {
@@ -335,43 +339,45 @@ class _ShowButton extends StatefulWidget {
 
 class _ShowButtonState extends State<_ShowButton> {
   @override
-  Widget build(BuildContext context) => Expanded(
-        child: TextButton(
-            child: Container(
-              height: AppSizes.standartHeightBigger,
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.all(
-                    Radius.circular(AppSizes.standartRadiusBig)),
-                color: Theme.of(context).buttonColor,
-              ),
-              child: Center(
-                child: Text(
-                  _selectCount > 0
-                      ? '${AppTexts.textShow} ($_selectCount)'
-                      : AppTexts.textShow,
-                  style: Theme.of(context).textTheme.button,
-                  textAlign: TextAlign.center,
-                ),
+  Widget build(BuildContext context) {
+    FilterScreen.of(context, listen: true);
+    return Expanded(
+      child: TextButton(
+          child: Container(
+            height: AppSizes.standartHeightBigger,
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.all(
+                  Radius.circular(AppSizes.standartRadiusBig)),
+              color: Theme.of(context).buttonColor,
+            ),
+            child: Center(
+              child: Text(
+                _selectCount > 0
+                    ? '${AppTexts.textShow} ($_selectCount)'
+                    : AppTexts.textShow,
+                style: Theme.of(context).textTheme.button,
+                textAlign: TextAlign.center,
               ),
             ),
-            onPressed: () {
-              print('Кнопка показать. Фильтр');
-              for (final places in mocks) {
-                final nearMe = _placesAround(
-                    places.lat,
-                    places.lon,
-                    DistanceSettings.latitude,
-                    DistanceSettings.longitude,
-                    _distance);
+          ),
+          onPressed: () {
+            print('Кнопка показать. Фильтр');
+            for (final places in mocks) {
+              final nearMe = _placesAround(
+                  places.lat,
+                  places.lon,
+                  DistanceSettings.latitude,
+                  DistanceSettings.longitude,
+                  _distance);
 
-                if (nearMe && _selectedCategories.contains(places.type)) {
-                  // _selectedPlaces.add(places.id);
-                  FilterScreen.of(context).updateSelect(places.id);
-                }
+              if (nearMe && _selectedCategories.contains(places.type)) {
+                FilterScreen.of(context).updateSelect(places.id);
               }
-              print(_selectedPlaces);
-            }),
-      );
+            }
+            print(_selectedPlaces);
+          }),
+    );
+  }
 }
 
 /// locationSettings:
